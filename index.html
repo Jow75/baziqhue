@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BAZIQ HUE | Brand & Motion Design Studio for Tech & Luxury Brands</title>\n    <meta name="description" content="Award-winning motion design and brand strategy studio. We craft visual masterpieces for tech startups, luxury brands, and global events. View our portfolio." />
+    <link rel="icon" href="https://i.imgur.com/xuTxEYN.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              background: '#050505', // Pure Premium Black
+              surface: '#121212',    // Dark Surface
+              primary: '#00f0ff',    // Electric Blue Accent
+              'primary-dark': '#00a3cc',
+              secondary: '#ffffff',  
+            },
+            fontFamily: {
+              inter: ['"Inter"', 'sans-serif'],
+            },
+            boxShadow: {
+              'neon': '0 0 20px rgba(0, 240, 255, 0.3)',
+              'neon-strong': '0 0 30px rgba(0, 240, 255, 0.6)',
+              'glow-text': '0 0 40px rgba(0, 240, 255, 0.4)',
+            },
+            backgroundImage: {
+              'tech-grid': "linear-gradient(to right, rgba(0, 240, 255, 0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 240, 255, 0.1) 1px, transparent 1px)",
+            },
+            animation: {
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'float': 'float 6s ease-in-out infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #050505;
+        color: #FFFFFF;
+        font-family: 'Inter', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        min-height: 100vh;
+      }
+      
+      /* Tech Grid Background - VISIBLE Cyan Tint */
+      .bg-grid-pattern {
+        background-size: 50px 50px;
+        background-image: linear-gradient(to right, rgba(0, 240, 255, 0.07) 1px, transparent 1px),
+                          linear-gradient(to bottom, rgba(0, 240, 255, 0.07) 1px, transparent 1px);
+        mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+      }
+
+      .text-gradient-cyan {
+        background: linear-gradient(to right, #ffffff, #00f0ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* Architectural Text Effects */
+      .text-stroke-subtle {
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
+        color: transparent;
+      }
+      
+      .text-stroke-medium {
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+        color: transparent;
+      }
+
+      .text-stroke-primary {
+        -webkit-text-stroke: 1px rgba(0, 240, 255, 0.2);
+        color: transparent;
+        filter: drop-shadow(0 0 2px rgba(0, 240, 255, 0.1));
+      }
+
+      .modal-backdrop {
+        background-color: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+      }
+      @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+      .animate-fade-in { animation: fadeIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+      @keyframes fadeInSlow { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+      .animate-fade-in-slow { animation: fadeInSlow 1.2s 0.2s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; }
+      
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #050505; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333; 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #00f0ff; 
+      }
+      
+      .transition-delay-100 { transition-delay: 100ms; }
+      .transition-delay-150 { transition-delay: 150ms; }
+      .transition-delay-200 { transition-delay: 200ms; }
+      .transition-delay-300 { transition-delay: 300ms; }
+      .transition-delay-400 { transition-delay: 400ms; }
+      .transition-delay-500 { transition-delay: 500ms; }
+    </style>
+
+<link rel="stylesheet" href="/index.css">
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-DYQ-IRRJ.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9521826189394140"
+     crossorigin="anonymous"></script>
+</head>
+  <body>
+    <div id="root"></div>
+    
+    <!-- BRAND PRESENTATION OVERLAY CONTAINER -->
+    <div id="brand-overlay" class="fixed inset-0 z-[9999] hidden bg-black flex items-center justify-center">
+        <button onclick="window.closeBrandOverlay()" class="absolute top-6 right-6 z-[10000] text-white hover:text-primary transition-colors bg-black/50 hover:bg-black rounded-full p-2 border border-white/10 cursor-pointer">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <iframe id="brand-iframe" class="w-full h-full border-0"></iframe>
+    </div>
+
+    <script>
+      // This variable holds the entire Brand Identity Presentation HTML
+      const brandPresentationCode = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brand Identity — Nexus Orion / Aethereal / Vela Nova / Lumen Atelier</title>
+
+    <script src="https://cdn.tailwindcss.com"><\/script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;600&family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- GLOBAL --- */
+        :root{
+            --bg-dark: #061325;
+            --bg-dark-contrast: #E0E0E0;
+            --cream: #F7F3EE;
+            --gold-1: #8F6B48;
+            --gold-2: #B99B67;
+            --glass: rgba(255,255,255,0.06);
+        }
+
+        html,body{height:100%;}
+        body{
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+            background: linear-gradient(180deg,#0b1220 0%, #07101a 100%);
+            color: #e6e6e6;
+        }
+
+        /* Layout */
+        .site-wrap{min-height:100vh;display:flex;flex-direction:column}
+        main{flex:1;}
+
+        /* Header */
+        nav{backdrop-filter: blur(6px);}
+
+        /* Sections */
+        .brand-section{
+            min-height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:3rem 1.25rem;
+            transition:transform .6s cubic-bezier(.2,.9,.25,1), opacity .6s ease;
+            position:relative;
+            overflow:hidden;
+        }
+
+        .brand-card{width:100%;max-width:1100px;border-radius:18px;padding:2.25rem;box-shadow:0 8px 40px rgba(2,6,23,0.6);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));}
+
+        /* --- ANIMATION KEYFRAMES --- */
+        @keyframes draw {
+            to { stroke-dashoffset: 0; }
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes scaleIn {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        @keyframes glowPulse {
+            0%, 100% { filter: drop-shadow(0 0 2px rgba(255,255,255,0.1)); }
+            50% { filter: drop-shadow(0 0 10px rgba(255,255,255,0.5)); }
+        }
+
+        /* --- ANIMATION STATES --- */
+        .inview { opacity:1; transform:translateY(0) scale(1); }
+        .outview { opacity:0; transform:translateY(20px) scale(.995); }
+
+        /* By default, hide elements to prepare for animation */
+        .brand-title, p, .brand-info-item { opacity: 0; }
+
+        /* TRIGGER ANIMATIONS WHEN .inview IS ADDED */
+        
+        /* 1. Draw Lines (SVG Paths) */
+        .inview .animate-path {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: draw 2s cubic-bezier(0.22, 0.9, 0.2, 1) forwards;
+        }
+        
+        /* 2. Scale Dots (SVG Circles) */
+        .inview .animate-dot {
+            transform-box: fill-box;
+            transform-origin: center;
+            animation: scaleIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.5s; /* Delay */
+        }
+
+        /* 3. Text Fade Up */
+        .inview .brand-title { animation: fadeUp 1s ease-out forwards 0.8s; }
+        .inview p { animation: fadeUp 1s ease-out forwards 1s; }
+        .inview .brand-info-item { animation: fadeUp 1s ease-out forwards 1.2s; }
+
+        /* --- BRAND SPECIFIC STYLES --- */
+
+        /* Nexus */
+        .nexus{background:linear-gradient(135deg,var(--bg-dark),#02111b);color:var(--bg-dark-contrast);} 
+        .nexus .nexus-text-gradient{background:linear-gradient(135deg,#E0E0E0 0%, #FFFFFF 50%, #B0B0B0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+        /* Aethereal */
+        .aethereal{background:linear-gradient(180deg,#fffaf5, #f6f2ea);color:#222}
+        .aethereal .aethereal-gold-text{background:linear-gradient(45deg,var(--gold-1),var(--gold-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+        /* Vela Nova */
+        .vela{background:linear-gradient(135deg,#071733,#0a2b4b);color:#cfe8ff}
+        .inview.vela .logo-svg { animation: glowPulse 3s infinite 2s; }
+
+        /* Lumen Atelier */
+        .lumen{background:linear-gradient(180deg,#0f0f10,#111214);color:#ffdca8}
+        .inview.lumen .logo-svg { filter: drop-shadow(0 0 15px rgba(255, 220, 168, 0.3)); }
+
+        /* Logo containers */
+        .logo-svg{max-width:320px;width:60%;height:auto}
+
+        /* Responsive tweaks */
+        @media (max-width:768px){
+            .brand-card{padding:1.25rem;border-radius:12px}
+            .logo-svg{width:70%}
+            h1.brand-title{font-size:clamp(1.4rem,5vw,2.5rem)}
+        }
+        
+        /* Footer Dots */
+        .dot-active{width:10px;height:10px;border-radius:999px;background:linear-gradient(90deg,#fff,#b0b0b0);box-shadow:0 2px 8px rgba(0,0,0,0.35)}
+        button:focus, a:focus{outline:3px solid rgba(255,255,255,0.08);outline-offset:3px}
+
+    </style>
+</head>
+<body class="site-wrap">
+
+    <header class="fixed top-4 left-0 right-0 z-50 px-4 sm:px-8">
+        <nav class="flex items-center justify-between rounded-xl p-2 bg-white/6 border border-white/6 shadow-lg">
+            <div class="flex items-center gap-4">
+                <div class="pl-2 text-sm font-extrabold tracking-widest uppercase text-white">Identity Deck</div>
+                <div class="hidden sm:flex gap-2 text-xs text-gray-300">
+                    <button data-target="nexus" class="nav-btn px-2 py-1 rounded text-xs hover:text-white transition">Nexus Orion</button>
+                    <button data-target="aethereal" class="nav-btn px-2 py-1 rounded text-xs hover:text-white transition">Aethereal</button>
+                    <button data-target="vela" class="nav-btn px-2 py-1 rounded text-xs hover:text-white transition">Vela Nova</button>
+                    <button data-target="lumen" class="nav-btn px-2 py-1 rounded text-xs hover:text-white transition">Lumen Atelier</button>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <button id="enableAudioBtn" class="px-3 py-1 rounded bg-white/8 hover:bg-white/16 text-sm text-white">Enable audio</button>
+                <button onclick="smoothScrollTo('about')" class="text-xs text-gray-300 hidden sm:inline hover:text-white transition">About</button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main" class="pt-20">
+
+        <section id="nexus" class="brand-section nexus">
+            <div class="brand-card mx-4 sm:mx-8 lg:mx-0 flex flex-col md:flex-row gap-6 items-center">
+                <div class="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
+                    <svg class="logo-svg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                        <defs>
+                            <linearGradient id="platinum-sheen-2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#E0E0E0"/>
+                                <stop offset="50%" stop-color="#FFFFFF"/>
+                                <stop offset="100%" stop-color="#B0B0B0"/>
+                            </linearGradient>
+                        </defs>
+                        <g transform="translate(106,106) scale(0.6)" class="nexus-mark">
+                            <path class="animate-path" d="M50 100 L250 450 L450 100 L250 0 Z" fill="none" stroke="url(#platinum-sheen-2)" stroke-width="8" stroke-linejoin="round"/>
+                            <line class="animate-path" style="animation-delay:0.3s" x1="120" y1="180" x2="250" y2="350" stroke="url(#platinum-sheen-2)" stroke-width="4"/>
+                            <circle class="animate-dot" cx="120" cy="180" r="12" fill="#061325" stroke="url(#platinum-sheen-2)" stroke-width="4"/>
+                        </g>
+                    </svg>
+
+                    <h1 class="brand-title text-4xl sm:text-5xl font-extrabold tracking-wide mt-4 nexus-text-gradient">NEXUS ORION</h1>
+                    <p class="mt-2 text-xs tracking-widest text-gray-300 uppercase">Secure Global Infrastructure</p>
+                </div>
+
+                <div class="w-full md:w-1/3 flex flex-col gap-3 text-xs text-gray-400 font-mono brand-info-item">
+                    <div class="flex items-center gap-2"><div class="w-4 h-4 rounded bg-[#061325] border border-gray-600"></div><span>PMS 289 C</span></div>
+                    <div class="flex items-center gap-2"><div class="w-4 h-4 rounded bg-gradient-to-br from-gray-200 to-gray-400"></div><span>PMS 877 C</span></div>
+                    <div class="flex items-center gap-2"><span>FONT: MANROPE</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="aethereal" class="brand-section aethereal outview">
+            <div class="brand-card mx-4 sm:mx-8 lg:mx-0 flex flex-col md:flex-row gap-6 items-center">
+                <div class="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
+                    <svg class="logo-svg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                        <defs>
+                            <linearGradient id="gold-foil-2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="10%" stop-color="#8F6B48"/>
+                                <stop offset="45%" stop-color="#B99B67"/>
+                                <stop offset="70%" stop-color="#F2E2BA"/>
+                            </linearGradient>
+                        </defs>
+                        <g transform="translate(256,230)">
+                            <circle class="animate-path" style="animation-duration:3s" cx="0" cy="0" r="140" fill="none" stroke="url(#gold-foil-2)" stroke-width="2"/>
+                            <path class="animate-path" style="animation-delay:0.5s; animation-duration:2.5s" d="M-60 50 Q-30 -80 0 -100 Q30 -80 60 50 Q0 80 -60 50" fill="none" stroke="url(#gold-foil-2)" stroke-width="2.5" stroke-linecap="round"/>
+                        </g>
+                    </svg>
+                    <h1 class="brand-title text-4xl sm:text-6xl font-normal italic tracking-wide mt-4 text-[#262626]">AETHEREAL</h1>
+                    <p class="mt-2 text-xs tracking-widest text-gray-600 uppercase aethereal-gold-text">EST. MMXXV</p>
+                </div>
+
+                <div class="w-full md:w-1/3 flex flex-col gap-3 text-xs text-gray-600 brand-info-item">
+                    <div class="flex items-center gap-2"><div class="w-4 h-4 rounded bg-[#F7F3EE] border border-gray-300"></div><span>WARM CREAM</span></div>
+                    <div class="flex items-center gap-2"><div class="w-4 h-4 rounded bg-[#B99B67]"></div><span>FOIL: LUXOR 420</span></div>
+                    <div class="flex items-center gap-2"><span>FONT: CINZEL / DIDOT</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="vela" class="brand-section vela outview">
+            <div class="brand-card mx-4 sm:mx-8 lg:mx-0 flex flex-col md:flex-row gap-6 items-center">
+                <div class="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
+                    <svg class="logo-svg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                        <g transform="translate(256,256) scale(0.9)">
+                            <path class="animate-path" d="M0 -120 L35 -40 L110 -25 L55 10 L70 85 L0 40 L-70 85 L-55 10 L-110 -25 L-35 -40 Z" fill="none" stroke="#7dd3fc" stroke-width="3"/>
+                        </g>
+                    </svg>
+                    <h1 class="brand-title text-4xl sm:text-5xl font-extrabold tracking-wide mt-4">VELA NOVA</h1>
+                    <p class="mt-2 text-xs tracking-widest text-gray-200 uppercase">Deep Sea Tech + Bioluminescent UI</p>
+                </div>
+
+                <div class="w-full md:w-1/3 flex flex-col gap-3 text-xs text-gray-200 brand-info-item">
+                    <div class="flex items-center gap-2"><div class="w-4 h-4 rounded bg-gradient-to-br from-teal-500 to-blue-600"></div><span>Accent: Biolume</span></div>
+                    <div class="flex items-center gap-2"><span>FONT: INTER / MANROPE</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="lumen" class="brand-section lumen outview">
+            <div class="brand-card mx-4 sm:mx-8 lg:mx-0 flex flex-col md:flex-row gap-6 items-center">
+                <div class="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
+                    <svg class="logo-svg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                        <g transform="translate(256,256) scale(0.9)">
+                            <rect class="animate-path" x="-55" y="-55" width="110" height="110" rx="20" stroke="#ffdca8" stroke-width="3" fill="none"/>
+                            <circle class="animate-dot" cx="0" cy="0" r="30" fill="#ffdca8"/>
+                        </g>
+                    </svg>
+                    <h1 class="brand-title text-4xl sm:text-5xl font-bold tracking-wide mt-4">LUMEN ATELIER</h1>
+                    <p class="mt-2 text-xs tracking-widest text-gray-300 uppercase">Artisanal Lighting & Prints</p>
+                </div>
+
+                <div class="w-full md:w-1/3 flex flex-col gap-3 text-xs text-gray-200 brand-info-item">
+                    <div class="flex items-center gap-2"><div class="w-4 h-4 rounded bg-[#ffdca8]"></div><span>FOIL: WARM GOLD</span></div>
+                    <div class="flex items-center gap-2"><span>FONT: DIDOT / CINZEL</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="brand-section outview">
+            <div class="brand-card mx-4 sm:mx-8 lg:mx-0 text-center">
+                <h2 class="text-2xl font-semibold brand-title">About this deck</h2>
+                <p class="mt-3 text-sm text-gray-300 max-w-2xl mx-auto">Upgraded into a single scroll-based experience. Audio uses WebAudio and only plays after you enable it. This file is responsive and uses intersection observers to trigger animations and sound cues. Use the top nav to jump between brands.</p>
+                <div class="mt-6 flex flex-wrap items-center justify-center gap-3 brand-info-item">
+                    <button class="px-4 py-2 rounded bg-white/6 hover:bg-white/10 transition" onclick="smoothScrollTo('nexus')">Jump to Nexus</button>
+                    <button class="px-4 py-2 rounded bg-white/6 hover:bg-white/10 transition" onclick="smoothScrollTo('aethereal')">Jump to Aethereal</button>
+                    <button class="px-4 py-2 rounded bg-white/6 hover:bg-white/10 transition" onclick="smoothScrollTo('vela')">Jump to Vela</button>
+                    <button class="px-4 py-2 rounded bg-white/6 hover:bg-white/10 transition" onclick="smoothScrollTo('lumen')">Jump to Lumen</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
+        <div id="dots" class="flex gap-3 p-2 rounded-full bg-black/30 backdrop-blur-sm px-4 py-2"></div>
+    </footer>
+
+    <script>
+        /* ----------------------
+           Audio helpers (WebAudio) — defensive and robust
+           ---------------------- */
+        let audioCtx = null;
+        function ensureAudioContext(){
+            if(!audioCtx || (audioCtx.state === 'closed')){
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            return audioCtx;
+        }
+
+        function _num(v, fallback){
+            const n = Number(v);
+            return Number.isFinite(n) ? n : fallback;
+        }
+
+        function _safeStartOscillator(ctx, osc, startAt){
+            try{ osc.start(startAt); }catch(e){ try{ osc.start(); }catch(e2){} }
+        }
+
+        function playChime(opts){
+            const oopts = opts || {};
+            const frequency = _num(oopts.frequency, 880);
+            const duration = Math.max(0.02, _num(oopts.duration, 0.18));
+            const whenOff = _num(oopts.when, 0);
+            const detune = _num(oopts.detune, -100);
+
+            const ctx = ensureAudioContext();
+            const now = Number.isFinite(ctx.currentTime) ? ctx.currentTime : 0;
+            const startTime = now + whenOff;
+
+            const o = ctx.createOscillator();
+            const g = ctx.createGain();
+
+            try{ o.type = 'sine'; }catch(e){}
+            try{ if(Number.isFinite(frequency)) o.frequency.value = frequency; }catch(e){}
+            try{ if(Number.isFinite(detune)) o.detune.value = detune; }catch(e){}
+
+            o.connect(g); g.connect(ctx.destination);
+
+            const tiny = 0.00001;
+            const peak = 0.15;
+            try{ g.gain.setValueAtTime(tiny, startTime); }catch(e){ try{ g.gain.value = tiny }catch(e){} }
+            try{ g.gain.exponentialRampToValueAtTime(peak, startTime + 0.01); }catch(e){ try{ g.gain.linearRampToValueAtTime(peak, startTime + 0.01); }catch(e){} }
+            try{ g.gain.exponentialRampToValueAtTime(tiny, startTime + duration); }catch(e){ try{ g.gain.linearRampToValueAtTime(tiny, startTime + duration); }catch(e){} }
+
+            _safeStartOscillator(ctx, o, startTime);
+            try{ o.stop(startTime + duration + 0.02); }catch(e){ /* ignore */ }
+        }
+
+        function playPulse(opts){
+            const oopts = opts || {};
+            const frequency = _num(oopts.frequency, 220);
+            const duration = Math.max(0.02, _num(oopts.duration, 0.32));
+
+            const ctx = ensureAudioContext();
+            const now = Number.isFinite(ctx.currentTime) ? ctx.currentTime : 0;
+            const startTime = now;
+
+            const o = ctx.createOscillator();
+            const g = ctx.createGain();
+            try{ o.type = 'triangle'; }catch(e){}
+            try{ if(Number.isFinite(frequency)) o.frequency.value = frequency; }catch(e){}
+
+            o.connect(g); g.connect(ctx.destination);
+
+            const tiny = 0.00001;
+            try{ g.gain.setValueAtTime(tiny, startTime); }catch(e){ try{ g.gain.value = tiny }catch(e){} }
+            try{ g.gain.linearRampToValueAtTime(0.12, startTime + 0.02); }catch(e){}
+            try{ g.gain.linearRampToValueAtTime(tiny, startTime + duration); }catch(e){}
+
+            _safeStartOscillator(ctx, o, startTime);
+            try{ o.stop(startTime + duration + 0.02); }catch(e){}
+        }
+
+        /* ----------------------
+           Intersection Observer to trigger section reveal + sounds
+           ---------------------- */
+        const sections = document.querySelectorAll('.brand-section');
+        const options = { root: null, rootMargin: '0px', threshold: 0.45 };
+
+        const onIntersect = (entries)=>{
+            entries.forEach(entry => {
+                const id = entry.target.id;
+                if(entry.isIntersecting){
+                    entry.target.classList.add('inview');
+                    entry.target.classList.remove('outview');
+                    try{
+                        switch(id){
+                            case 'nexus': playChime({frequency:920,duration:.16,detune:-40}); break;
+                            case 'aethereal': playChime({frequency:640,duration:.26,detune:40}); break;
+                            case 'vela': playPulse({frequency:180,duration:.28}); break;
+                            case 'lumen': playChime({frequency:540,duration:.22,detune:-10}); break;
+                            case 'about': playChime({frequency:720,duration:.12}); break;
+                        }
+                    }catch(e){ console.warn('Audio trigger failed', e); }
+                } else {
+                    entry.target.classList.remove('inview');
+                    entry.target.classList.add('outview');
+                }
+            })
+        }
+
+        const observer = new IntersectionObserver(onIntersect, options);
+        sections.forEach(s => { s.classList.add('outview'); observer.observe(s); });
+
+        function smoothScrollTo(id){
+            const el = document.getElementById(id);
+            if(!el) return;
+            el.scrollIntoView({behavior:'smooth', block:'center'});
+        }
+
+        document.querySelectorAll('.nav-btn').forEach(btn=>{
+            btn.addEventListener('click', e=>{
+                const t = btn.getAttribute('data-target');
+                smoothScrollTo(t);
+            })
+        });
+
+        const dotsWrap = document.getElementById('dots');
+        const ids = ['nexus','aethereal','vela','lumen','about'];
+        ids.forEach(id=>{
+            const el = document.createElement('div');
+            el.classList.add('w-3','h-3','rounded-full','bg-white/20');
+            el.setAttribute('data-target',id);
+            el.style.cursor = 'pointer';
+            el.addEventListener('click',()=>smoothScrollTo(id));
+            dotsWrap.appendChild(el);
+        });
+
+        const updateDots = ()=>{
+            const mid = window.innerHeight/2 + window.scrollY;
+            let active = 0;
+            sections.forEach((s,i)=>{
+                const r = s.getBoundingClientRect();
+                const top = r.top + window.scrollY;
+                const bottom = top + r.height;
+                if(mid >= top && mid <= bottom) active = i;
+            });
+            Array.from(dotsWrap.children).forEach((d,i)=>{
+                d.className = i===active? 'dot-active':'w-3 h-3 rounded-full bg-white/20';
+            })
+        }
+
+        window.addEventListener('scroll', updateDots);
+        window.addEventListener('resize', updateDots);
+        updateDots();
+
+        function replayVisible(){
+            const mid = window.innerHeight/2 + window.scrollY;
+            let visible = null;
+            sections.forEach(s=>{
+                const r = s.getBoundingClientRect();
+                const top = r.top + window.scrollY;
+                const bottom = top + r.height;
+                if(mid >= top && mid <= bottom) visible = s;
+            });
+            if(!visible) return;
+            visible.classList.remove('inview');
+            void visible.offsetWidth; // trigger reflow
+            visible.classList.add('inview');
+            try{ playChime({frequency:760,duration:.12}); }catch(e){}
+        }
+
+        document.addEventListener('keydown', e=>{
+            if(e.key === 'r') replayVisible();
+        });
+
+        const enableAudioBtn = document.getElementById('enableAudioBtn');
+        if(enableAudioBtn){
+            enableAudioBtn.addEventListener('click', async ()=>{
+                try{
+                    ensureAudioContext();
+                    if(audioCtx && audioCtx.state === 'suspended') await audioCtx.resume();
+                    try{ playChime({frequency:1000,duration:.12}); }catch(e){}
+                    enableAudioBtn.innerText = 'Audio enabled';
+                    enableAudioBtn.classList.add('bg-green-600','text-white');
+                }catch(err){
+                    console.warn('Audio enable failed', err);
+                }
+            });
+        }
+
+        window.addEventListener('load', ()=>{
+            const h = 'nexus';
+            setTimeout(()=>{ if(document.getElementById(h)) document.getElementById(h).scrollIntoView({behavior:'auto', block:'center'}) }, 80);
+        });
+
+        const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+        if(mq.matches){
+            document.documentElement.style.scrollBehavior = 'auto';
+        }
+
+    <\/script>
+</body>
+</html>`;
+
+    // 3D Abstract Animation Code
+    const abstractDemoCode = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstract Motion Graphics Generator</title>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #050505; }
+        canvas { display: block; }
+        #info {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            pointer-events: none;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div id="info">Interactive Abstract Motion <br> <span style="font-size: 0.6em; opacity: 0.6;">Move Mouse to Rotate</span></div>
+    
+    <!-- Three.js from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"><\/script>
+
+    <script>
+        let scene, camera, renderer;
+        let geometry, material, mesh, wireframe;
+        let particles, particleSystem;
+        let clock;
+        
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetX = 0;
+        let targetY = 0;
+
+        const windowHalfX = window.innerWidth / 2;
+        const windowHalfY = window.innerHeight / 2;
+
+        init();
+        animate();
+
+        function init() {
+            // 1. Scene Setup
+            scene = new THREE.Scene();
+            scene.fog = new THREE.FogExp2(0x050505, 0.002);
+
+            // 2. Camera Setup
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 50;
+
+            // 3. Renderer Setup
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+
+            // 4. Main Abstract Object (Morphing Sphere)
+            // We use an Icosahedron as the base for a "digital organism" look
+            const radius = 15;
+            const detail = 2; // Higher detail = more vertices to animate
+            geometry = new THREE.IcosahedronGeometry(radius, detail);
+
+            // Store original positions for morphing reference
+            geometry.userData = { originalPositions: [] };
+            const positionAttribute = geometry.getAttribute('position');
+            
+            for (let i = 0; i < positionAttribute.count; i++) {
+                geometry.userData.originalPositions.push(
+                    new THREE.Vector3(
+                        positionAttribute.getX(i),
+                        positionAttribute.getY(i),
+                        positionAttribute.getZ(i)
+                    )
+                );
+            }
+
+            // Material: Shiny, dark, reflective
+            material = new THREE.MeshPhongMaterial({
+                color: 0x222222,
+                emissive: 0x111111,
+                specular: 0x666666,
+                shininess: 60,
+                flatShading: true
+            });
+
+            mesh = new THREE.Mesh(geometry, material);
+            scene.add(mesh);
+
+            // Wireframe Overlay (The "Neon" look)
+            const wireframeMaterial = new THREE.MeshBasicMaterial({ 
+                color: 0x00ff88, 
+                wireframe: true, 
+                transparent: true, 
+                opacity: 0.3,
+                blending: THREE.AdditiveBlending
+            });
+            wireframe = new THREE.Mesh(geometry, wireframeMaterial);
+            // Make wireframe slightly larger to prevent z-fighting
+            wireframe.scale.setScalar(1.01);
+            scene.add(wireframe);
+
+            // 5. Lighting
+            const ambientLight = new THREE.AmbientLight(0x404040);
+            scene.add(ambientLight);
+
+            const pointLight1 = new THREE.PointLight(0x0088ff, 2, 100);
+            pointLight1.position.set(20, 20, 20);
+            scene.add(pointLight1);
+
+            const pointLight2 = new THREE.PointLight(0xff0088, 2, 100);
+            pointLight2.position.set(-20, -20, 20);
+            scene.add(pointLight2);
+
+            // 6. Particle System (Background noise)
+            const particleCount = 1000;
+            const particlesGeometry = new THREE.BufferGeometry();
+            const particlePositions = [];
+
+            for (let i = 0; i < particleCount; i++) {
+                const x = (Math.random() - 0.5) * 200;
+                const y = (Math.random() - 0.5) * 200;
+                const z = (Math.random() - 0.5) * 200;
+                particlePositions.push(x, y, z);
+            }
+
+            particlesGeometry.setAttribute('position', new THREE.Float32BufferAttribute(particlePositions, 3));
+            
+            const particlesMaterial = new THREE.PointsMaterial({
+                color: 0xffffff,
+                size: 0.5,
+                transparent: true,
+                opacity: 0.5
+            });
+
+            particleSystem = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particleSystem);
+
+            // 7. Event Listeners
+            clock = new THREE.Clock();
+            document.addEventListener('mousemove', onDocumentMouseMove);
+            window.addEventListener('resize', onWindowResize);
+        }
+
+        function onDocumentMouseMove(event) {
+            mouseX = (event.clientX - windowHalfX) * 0.05;
+            mouseY = (event.clientY - windowHalfY) * 0.05;
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            render();
+        }
+
+        function render() {
+            const time = clock.getElapsedTime();
+
+            // 1. Smooth Camera Movement based on Mouse
+            targetX = mouseX * 0.5;
+            targetY = mouseY * 0.5;
+            
+            mesh.rotation.y += 0.005;
+            mesh.rotation.x += 0.002;
+            wireframe.rotation.y = mesh.rotation.y;
+            wireframe.rotation.x = mesh.rotation.x;
+
+            camera.position.x += (targetX - camera.position.x) * 0.05;
+            camera.position.y += (-targetY - camera.position.y) * 0.05;
+            camera.lookAt(scene.position);
+
+            // 2. Vertex Manipulation (The "Breathing" Effect)
+            const positionAttribute = geometry.getAttribute('position');
+            const originalPositions = geometry.userData.originalPositions;
+
+            for (let i = 0; i < positionAttribute.count; i++) {
+                const oldPos = originalPositions[i];
+                
+                // Create a noise-like pattern using sine waves
+                // We use the vertex position and time to create a "wave" that travels across the mesh
+                const spike = Math.sin(oldPos.x * 0.5 + time * 2) * Math.cos(oldPos.y * 0.5 + time * 1.5) * Math.sin(oldPos.z * 0.5 + time) * 3;
+
+                // Normalize the vector to push it outward from center
+                const v = new THREE.Vector3(oldPos.x, oldPos.y, oldPos.z);
+                v.normalize();
+                
+                // Apply the spike magnitude
+                const distance = 15 + spike; // Base radius 15 + modulation
+                
+                positionAttribute.setXYZ(i, v.x * distance, v.y * distance, v.z * distance);
+            }
+            
+            positionAttribute.needsUpdate = true;
+            geometry.computeVertexNormals(); // Re-calculate lighting shadows
+
+            // 3. Pulse Lights
+            scene.children.forEach(child => {
+                if (child.isPointLight) {
+                    child.intensity = 2 + Math.sin(time * 3) * 0.5;
+                }
+            });
+
+            // 4. Rotate Particles slowly
+            particleSystem.rotation.y -= 0.002;
+
+            renderer.render(scene, camera);
+        }
+    <\/script>
+</body>
+</html>`;
+
+    // SONIX DEMO CODE
+    const sonixDemoCode = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Sonix Transcript</title>
+    <script src="https://cdn.tailwindcss.com"><\/script>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; 
+            z-index: 1000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: hidden; 
+            background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            padding: 0;
+            border: 1px solid #888;
+            width: 95%;
+            max-width: 1000px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            position: relative;
+            max-height: 90vh;
+            overflow: hidden; /* Prevent modal itself from scrolling, let inner content scroll */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-header {
+            padding: 10px 20px;
+            background: #f0f0f0;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .modal-body {
+            padding: 0;
+            overflow-y: auto; /* Enable scrolling for the transcript */
+        }
+
+        .btn-primary {
+            background-color: #2563eb;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4">
+
+    <div class="w-full max-w-5xl animate-fade-in-up text-center">
+        <!-- Main Page Content -->
+        <div class="mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-gray-800 mb-6">
+                Portfolio Showcase
+            </h1>
+            <p class="text-gray-600 mb-10 max-w-xl mx-auto text-lg">
+                This project features an integrated video player with automated transcription powered by Sonix AI. Click below to launch the interactive experience.
+            </p>
+            
+            <!-- The Single Button You Requested -->
+            <button id="openModalBtn" class="btn-primary">
+                Open Video & Transcript
+            </button>
+        </div>
+        
+        <div class="text-xs text-gray-400 mt-20">
+            &copy; 2025 Portfolio | Powered by Sonix.ai
+        </div>
+    </div>
+
+    <!-- The Modal Container -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="font-bold text-gray-700">Transcript Viewer</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                
+                <!-- START SONIX EMBED CODE -->
+                <!-- I have pasted your code exactly as provided here inside the modal -->
+                <div class="sonix--embed-container sonix--embed-container-video" style="position:relative !important;display:block;overflow-x:hidden;min-height:640px;max-height:640px;overflow-y: hidden;"><div class="sonix--embed-text" style="min-height:640px;max-height:640px;text-align: left;overflow-y: scroll;"><h2 style="font-size:18px;color:#3E3E3B;text-decoration:none;font-weight:700;">on-hold/DP_01036_S-01128_SD_TC.mov: <a href="https://sonix.ai/?utm_source=embed" style="text-decoration:none;color:#3E3E3B;" target="_blank" title="Sonix is the best video transcription service in 2025">Video automatically transcribed by Sonix</a></h2><p style="font-size:14px!important;color:#3E3E3B!important;text-decoration:none!important;display:block;">on-hold/DP_01036_S-01128_SD_TC.mov: <a href="https://sonix.ai/speech-to-text-all-supported-file-formats?utm_source=embed" style="text-decoration:none;color:#3E3E3B;" target="_blank" title="Sonix&#39;s converts the most popular video file formats to text">this mov video file </a>was <a href="https://sonix.ai/transcribe-video?utm_source=embed" style="text-decoration:none;color:#3E3E3B;" target="_blank" title="Sonix is the best way to transcribe video files in 2025">automatically transcribed by Sonix </a>with the <a href="https://sonix.ai/automated-transcription?utm_source=embed" style="text-decoration:none;color:#3E3E3B;" target="_blank" title="The best speech-to-text algorithms">best speech-to-text algorithms. </a>This transcript may contain errors. </p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Today on Dr. Phil, accusations.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />It&#39;s the most awful thing could ever be accused of is harming a child.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />David&#39;s ex accused his new wife of child abuse.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />I wanted to die.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Gossip I&#39;ve been accused of being the one that stands between Oprah and Stedman. Rumors. Is this gonna be the undoing of your marriage? What if you were accused of a crime you didn&#39;t commit? Tom was accused of trying to murder his wife, Lynn, plus a backstage conversation. The audience didn&#39;t hear.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />It just destroyed me.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Coming up. Let&#39;s do it. I want you to get excited about your life. If you&#39;re gonna talk to me, you&#39;re gonna have to be honest. This is gonna be a changing day in your life. All right. Guys are looking good. Accusations, gossip, hearsay. There&#39;s a part of all of us that believes where there&#39;s smoke, there&#39;s fire. When we see a sensational story in print or on TV, we just assume that it&#39;s true. Today, you&#39;ll see how being falsely accused can haunt and cripple someone their entire lives. My first guest found themselves in a he said she said situation when David&#39;s ex accused him and his new wife of child abuse.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />My name is Destiny, and my husband&#39;s David. We&#39;ve been married for two years. I met David in 99, and a month later, we were engaged. David was married before 10 years, had two small children, and I met his ex-wife. Got on great.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />When Destiny and I got married. And then when my ex-wife found out that she was pregnant, the ex-wife started giving me problems, you know, and they were fighting on the phone, and she was really demanding.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />On a Friday night, get a phone call that we have to come immediately down to the police department to discuss allegations of abuse at our house.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />When I read that report, I couldn&#39;t believe it. It was almost like the children were coached to say these horrible things.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />The report was that I was putting balls and knives in my stepdaughter&#39;s vagina. I almost passed out. I just felt devastated. Emotionally raped. The next night, my husband answered the phone, and he got served a subpoena for suspension of his visitation with his children. We get the letter in the mail from the National Child Abuse Registry Index that my husband&#39;s name has been placed on this list.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />It&#39;s been awful. I mean, just the, the financial situation and.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />Over $35,000 is court and legal fees, and the rest of it is all of our debt that we cannot pay every month.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />We&#39;ve had to borrow money, and our family&#39;s had to let us borrow money. My family and --</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />My husband and I argue every day. We&#39;re on the verge of a divorce.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />It&#39;s just horrible.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />I was a new wife. I could have dated anybody I wanted to. And I meet the man that I wanted to live with forever. That I said, I told him I would live with him in a shoebox, but I didn&#39;t. I wouldn&#39;t live with him with this. This is horrible. How do you do it? I don&#39;t know, how do I get over it?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />So what&#39;s this doing to the two of you? What&#39;s it doing to you and your home and your marriage?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />What marriage? It&#39;s absolutely awful. It has devastated me to the point where, you know, that night driving home from the police department. If I wasn&#39;t pregnant, I was seven and a half months pregnant. When this woman did this to me, I was very, very ill. I almost died having my daughter, and I wanted to die, at that point. I didn&#39;t want to go on. And every day I just feel like I die a little more because it just continues and continues and it&#39;s in my face. I have to hear it. And it&#39;s just, it&#39;s the most awful thing that I think could ever be accused of is harming a child. I don&#39;t think you can get worse than that.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />This has been investigated over and over and over, Correct?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />By any agency you can think of?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Yeah, by everybody, and you&#39;ve taken polygraphs. You&#39;ve done, you&#39;ve, you&#39;ve -- children have been submitted to every kind of questioning, every --</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />Exams everything.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />This, that, and the other. And the decision has universally been that this absolutely did not happen.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />Correct.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />You&#39;ve been completely and totally cleared --</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />Over and over again --</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />And vindicated time and time and time again. But yet it just keeps coming back --</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />Right.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Because your, your position is that accusations keep getting made for other reasons.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />Yes, it&#39;s just never never-ending.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />Was the same story -- well, it&#39;s the same story with different twists regarding the same weekend over and over again.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />And you, you have -- had this become a wedge that&#39;s driven between you instead of something that you have close ranks and bonded over. Now, tell me about this wedge, that this is driven between you because, I mean, I do -- I want people to know that when you make accusations against other people, when you spread lies, when you spread gossip, somebody has to pay for that. It comes, it comes home to, to you guys on a day-to-day, real-world basis. What&#39;s happened between the two of you?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />Well, it&#39;s just torn us apart. I mean, we got along so good when we first met, and we were so in love, we never fought. And I was so happy. But after this happened, we all we do is fight and argue. And there&#39;s just so many problems and stress, and it&#39;s hard to sleep at night. And I just have trouble with everyday things.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />When I brought my daughter home from the hospital, he felt so guilty about not seeing his kids. He did not bond with her. He didn&#39;t want to hold her. He didn&#39;t want to take care of her. He was terrified to change her diaper to bathe her. And he still is, is very leery about that. And here&#39;s this tiny little baby, and he is pretending like she&#39;s not there, almost. You know, that was devastating to me. You know, as a new wife, I had only been married just a short time, and I am a new mother, and I have all this looming over me, and I need my husband there. And he was not available to me. Totally checked out.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />So what have you said to what&#39;s happened to you inside from this, that you&#39;ve been unable to plug in and feel good about that?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />I don&#39;t know, I just it&#39;s like I block things out. You know, I just try and move ahead with my everyday life and work. But there&#39;s just so many things: bills and stress and sleepless nights and the worry. But I just try to make the best of it and move ahead. Because I know someday I will be with my children, and this will all be cleared.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />And we have them back now. They come over now for their visitation.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Yeah. I mean, they&#39;ve reinstituted all of that where you have.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />In the last two months. They&#39;ve started coming over.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Yeah, they&#39;ve this has this has run enough of a course --</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />Yes.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />That they have said we&#39;re here. Here are your children. Your visitation is restored --</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />Yes.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />And we&#39;re not gonna continue to intrude on your life at that level.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />Yes, but it&#39;s just hard to make things back the way they were. I mean, I was paying for monitored visits, and it was just horrible.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />I couldn&#39;t be around the kids at all. I had introduced my daughter when she was six months old. Who was their sister with a police officer present.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />So what do you guys do with this? It&#39;s that guilt by accusation where you say, I know I didn&#39;t do any of this, I know I didn&#39;t do these things to this, to this, this child. But everybody is saying that I did. I hear you saying you&#39;re kind of afraid to even be around a child.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />Well, that too, and I just I mean, friends and schools and people that I used to know, you know, I don&#39;t know how they&#39;ll react to me now. You know, I&#39;ve just become kind of closed in. It&#39;s just really affected me in my relationships.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />At work because she took the kids for their molestation exam to the emergency room, where I was a nurse, and told him my name. So we&#39;re all around the county.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />What&#39;s your attitude about this with regard to your relationship? Is this gonna get you? Is this gonna be the undoing of your marriage?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />Well, lately it&#39;s been feeling like that because we don&#39;t communicate at all. We&#39;re so much under stress, we fight with each other. He has a different way of dealing with his issues. He&#39;s very passive, and it&#39;s almost an annoying to me. He will totally ignore everything and just check out and get on the computer and do his thing, and I need to talk about it. I need to do something about it, and I&#39;m very upset. He doesn&#39;t want to talk to me about it, you know? And he goes, &quot;Why are you talking to your mom? Why are you talking to your friends?&quot;</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />And you talk --</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />I am so angry I can&#39;t even go on. Oh, I do he won&#39;t say anything.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />&#39;cause we react differently.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />How would he say something?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />He gets a chance. He gets a chance.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Well, I&#39;m just, I&#39;m just teasing you. But I mean, really, &#39;cause it looks to me like this is putting that is just so much stress and pressure that it&#39;s putting big cracks in the foundation here. And I mean, are you willing to let that happen because you&#39;re saying, well, that&#39;s the way it&#39;s looking right now. That&#39;s not okay.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />I feel like the other woman; all his money goes to her for child support. All of it goes garnish. Nothing comes to my house. I pay all the bills. Now, anything that he brings home goes to court. I support everybody, I do everything. And when his kids come, I buy their clothes. I pay for them things for them to do. And so I feel like I&#39;m supporting them too. I just, I feel like I&#39;m the mistress or I&#39;m the other woman, and I&#39;m not. I&#39;m the wife, and I don&#39;t feel important at all.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Well, yeah, but you&#39;re --</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />It&#39;s not protecting me --</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />But you&#39;re choosing that. And what you&#39;ve got to do is negotiate something that both of you can be involved in and excited about.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />Yes.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />And you got to be willing to say something.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />Yes.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />&#39;Cause, I mean, you really you do talk a lot, but I get the feeling. I get the feeling. You wouldn&#39;t yell if your hair was on fire. I mean, you know, we got, we got to get you involved more with Destiny and David when we come back.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />He does, he does.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />We&#39;re talking to David and Destiny, and I ask you guys right before the break if all of these allegations, all of this stress, all of this pressure of being accused of wrongdoing with the children, which, I mean, that&#39;s like the worst thing you can be accused of, right? And in the Child Protective Services World, they necessarily have an attitude that says we would rather have a thousand false positives than miss one. That&#39;s true. And y&#39;all, I mean, you get that, don&#39;t you? That&#39;s a tough situation. We do want to protect the children, but there&#39;s a point at which you&#39;ve got to draw a line in the sand and say, we&#39;ll do what we have to to monitor a situation, but we&#39;re not gonna continue to beat people up over this thing. And it&#39;s a tough I mean, you recognize objectively that&#39;s a tough balance, don&#39;t you?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />Yes.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />I mean, &#39;cause let&#39;s assume that the accusations were true, and we know they&#39;re not. They have -- you&#39;ve been you have been cleared of those time, and time, and time again. But if they were true, you understand how important it would be for someone to tenaciously, doggedly get in there and rescue that child, right, and protect them. So we do want our child Protective Services people to do those kind of things. But when you&#39;re innocent, when that&#39;s not happened, then there&#39;s got to be a place that it stops. And I&#39;m you said to me that it&#39;s kind of like you&#39;re foretelling that this marriage is gonna be over with, that it&#39;s, it&#39;s spinning so much out of control right now that you that it&#39;s just not right, doesn&#39;t feel right, and, and you&#39;re not good with it, correct. That&#39;s a yes or no question.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />Yeah.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Okay. All right. Now, what&#39;s your story in this? What, what is your story in this? Are you willing to let all of this outside pressure just spin your marriage off into the ditch?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />No, I&#39;m not, I don&#39;t want this to happen. I mean, I love her more than anything, and this has just been so devastating. And I&#39;ll do anything to keep this together.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Because let me tell you something. I see couples oftentimes do what I call non-directional frustration. It&#39;s kind of like you can have all of these frustrations at work, with your family, with your exes, with finances, or whatever. But yet you don&#39;t aim at there. You aim it at each other. Don&#39;t you all -- you know what I&#39;m talking about. You know what I&#39;m talking about. It&#39;s like you&#39;re handy, you&#39;re just handy. If you&#39;re frustrated, who are you gonna turn on? You&#39;re not gonna turn on the guy down at the 7-Eleven. You don&#39;t even know him, and he don&#39;t want to hear it. You know he&#39;s not gonna pay attention to it. So you do it with your spouse. You do it with your mate. And the enemy here is not David, the enemy here is not Destiny. The enemy here is an outside force outside the marriage. It&#39;s some problems with the system. It&#39;s false accusations; those are the enemies. But yet you&#39;re fighting amongst yourselves. I mean, don&#39;t you see that? What? -- You can talk now. No, really, what do you think about that? I mean, you&#39;re you guys are fighting among yourselves.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />I know, and a lot of it is over. Little things will escalate into a big, huge fight, and they&#39;re starting to get more vile as they go on. But sometimes I feel like when she gets thrown up in my face again when something happens, I feel like sometimes he just downplays it or protects her in some way. He&#39;s never once said one negative thing towards her or expressed any anger towards her or anything. It&#39;s just like, well, this is how she is, you know.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />Arguing with her, you know, I know if I ever got on her bad side. She&#39;d get back at me. That&#39;s why I was afraid when Destiny, (crosstalk) my ex, got in a fight on the phone. Soon thereafter, we&#39;re called by the police.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Yeah. That&#39;s right. And so, I mean, she&#39;s taught you how to treat her, right?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />Yeah.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />I mean, this other person has said, &quot;You want to jack with me? I&#39;ll bring the forces of hell down on you, boy.&quot;</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />Exactly.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />And so and so, you just like I don&#39;t, I don&#39;t want to start something. I don&#39;t want to make it worse.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />I understand that.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />But he has a reason. He has a reason for these things. But the point is, instead of fighting about this, you&#39;ve got to work the problem. You guys have a problem here, and it hasn&#39;t gone away. But you&#39;ve got to work the problem. You can&#39;t let the problem become divisive between you. You&#39;ve got to say, look, we&#39;ve been frustrated with each other, we&#39;ve been blaming each other. We&#39;ve been letting someone else control and dictate our marriage. Let&#39;s resolve not to do that; let&#39;s resolve to work the problem together. Tell me what you need, tell her what you need, and instead of judging that, and yeah, but, yeah, but, yeah, but take &#39;Yeah But&#39; out of your vocabulary. Listen to each other and come up with a plan that both of you can say, &quot;That works for me, that meets my needs.&quot; And if the only time you ever talk about this is when you&#39;re in a fight, that won&#39;t work. You&#39;ve got to talk about it peacefully, you&#39;ve got to talk about it strategically, and say, let&#39;s get a plan right, your needs down, and give it to him. Sometimes, men, we&#39;ve got to like, see this and hear it four or five times. Write them down and give it to &#39;em. And then read it, okay. Read it, all of it. Okay. You&#39;ll find out around here. I&#39;m not through until I&#39;m through. I have more to say to Destiny and David backstage. We&#39;ll be right back.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Closed captioning provided by. The reason I wanted to talk to you is you said something to me right at the end, and I don&#39;t know if you&#39;re getting what I&#39;m saying or not, but right at the end, you said what to me.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />I said, &quot;I&#39;m beginning to hate him, almost. I&#39;m resentful.&quot; And I told him the other day that I hated him, and I don&#39;t, but I hate my situation so much that I can&#39;t even think rationally anymore.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Well, so what are you saying you want to do? Do you want out of this marriage?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />No.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Is that what you&#39;re saying?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />No, I mean no, but I&#39;m tired of fighting. I&#39;m tired of this woman. Tired of being called on the police department. I&#39;m tired of not having any food in my house. I&#39;m tired of not being able to buy my baby anything. I&#39;m tired of being talked about at work. I just all around, she&#39;s destroyed me. In 18 months, I am destroyed. I&#39;ve only been married for two years and we didn&#39;t even spend our. Our second anniversary was Labor Day, and we didn&#39;t even spend it together. We didn&#39;t even get each other anything. I&#39;ve only been married for two years.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />So what do you hear her saying?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />I understand, I just I wish I could do something right now, but, I mean, I can, but it&#39;s just been so much, so much stress. And I&#39;m sorry. I really want to work this out. I will do whatever I can. It&#39;s just it&#39;s been devastating to us and just a lot of pressure, and I maybe I deal with it the wrong way. I need to stand up and face things instead of back down. And I realize that&#39;s what she wants. But so far, I&#39;ve just been beaten down so many times, it&#39;s hard to get up.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />But do you have a lawyer?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />Yes, I do.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />Have three lawyers.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />We&#39;ve been through three and --</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Nothing happens --</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />It&#39;s just it goes on and on. I want something to happen quicker, and it just continues to go on. I mean, hopefully we&#39;ll see an end of this.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />But, you know, it strikes me very clearly that you definitely are feeling very much alone here.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />I am.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />You&#39;re feeling like this person has come in from the outside. They&#39;ve taken away your happiness. They&#39;ve taken away your home. They&#39;ve taken away your dream. They&#39;ve taken away your marriage. And, and in that, they&#39;ve taken away your happiness and --</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />My husband totally changed; he ignores me. He gets on the computer for hours; he doesn&#39;t want to help me around the house. I work just as much as he does. I stay up all night long at work, come home. I&#39;m up all day with a baby, I can&#39;t afford childcare. I am so tired of doing everything I do, everything in my house, and all his. Everything goes to that woman. Whole life around her.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />And do you hear what she&#39;s saying? And I understand what&#39;s happening with you. I understand that your way of dealing with this is like, okay, I just I&#39;ll just lose myself in this computer, I&#39;ll lose myself in work. I&#39;ll lose myself in whatever. But you can&#39;t do that, you can&#39;t do that. If you do, it&#39;s gonna cost you your marriage, it&#39;s gonna cost you your wife. It&#39;s gonna cost you everything that you have put together at this point. And you&#39;re giving that away, you&#39;re giving that power away to somebody else, you cannot do that. You have got to plug in here. You&#39;ve got to stop being passive and start actively working the problem. She feels alone, she feels lonely, she feels alone, and she needs you to plug back in. She cannot navigate this anymore. Her coping energies are spent. She&#39;s saying, &quot;I&#39;ve run out of coping energy, I can&#39;t do this. I don&#39;t have it, I just can&#39;t do this alone. I need him back in the game.&quot; Isn&#39;t that what you&#39;re saying? And she&#39;s getting to the point that she resents this other woman for what she&#39;s doing, and she resents you for allowing it.
+And she&#39;s saying, step up and protect me. I am your wife. Protect me, protect your daughter. Plug into our family and take care of us. And whatever you have to do, whatever you have to do with lawyers, whatever you have to do to get this thing turned around. You&#39;ve got to get active in this, and you&#39;ve got to give him a chance to do that. Don&#39;t seal his fate by saying, &quot;It&#39;s over, it&#39;s over.&quot; There&#39;s not anything he can do. You&#39;ve got to let him plug into this and let this be a beginning. Let coming here let, let, let, coming here. Let&#39;s be on this show. Let this be the point in your life where you took a right turn and you got back in the game and, and allow yourself to have some hope and optimism again. You got some help here.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />I know.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />You got some resources here. And you&#39;ve got to step up and do it. And we&#39;re gonna follow you all and see what happens.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />Thank you very much.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Okay, now will you do it?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />Yes, I will do whatever it takes.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Will you give him the chance to do what he has to do?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />I&#39;ll do whatever it takes.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />And step-up --</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />This was the first step, I just knew coming here, just speaking about it. I mean, I feel more confident, and I will work, work really hard with this.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />All right.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>David 01036: </strong><br />Thank you.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Thanks so much.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />Thanks.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Thanks, guys.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Destiny 01036: </strong><br />Thanks.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />I&#39;ll be watching y&#39;all. Next, a couple whose lives were destroyed when the husband was accused of trying to murder his wife.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Lynn 01036: </strong><br />I was being poisoned.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Today, we&#39;re talking about the pain of being falsely accused. Tom and Lynn have lived this tragedy when Tom was falsely accused of trying to murder his own wife.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Lynn 01036: </strong><br />I was extremely excited to build my dream home, so we started with the deck.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Tom 01036: </strong><br />She would be underneath. She would be holding the board. I&#39;d be up on the deck, and I&#39;d be sawing it. After two weeks, Lynn got sick.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Lynn 01036: </strong><br />I started throwing up, but I thought I had food poisoning. The doctors could not find out what was wrong. I think it was the sixth trip that I made my doctor sit down, and he told me that I was being poisoned with arsenic.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Tom 01036: </strong><br />The hospital notified police department. They came out.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Lynn 01036: </strong><br />All the questioning that was directed at me was, &quot;Why would Tom try to kill you?&quot;</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Tom 01036: </strong><br />I felt like the police were, were convinced that I was the person that was trying to kill my wife.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Lynn 01036: </strong><br />I spent a week wondering who would try to poison me. I didn&#39;t suspect Tom.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Tom 01036: </strong><br />The state investigators could not find any proof. The FBI questioned us twice. He said that he understood that we were building a house. And he asked, &quot;Were we using treated lumber?&quot; And I said, &quot;Well, sure.&quot; He took hair samples from Lynn. They took hair samples from me. The results came back. Not only was Lynn being poisoned because I was too, and it was the treated lumber that was the source. This had gone to the grand jury as an attempted murder, and that the grand jury dismissed it. The House will never be finished. There&#39;s too much arsenic inside. I have been extremely depressed. I think about it constantly. Throw that in with the fact that there are some people that still believe that I tried to kill my wife, my reputation is basically shot.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Lynn 01036: </strong><br />I&#39;d like to ask Dr. Phil what the best way for me to help Tom cope. And I&#39;m basically all he has, and I want to help him.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />So this has just been a terrible time.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Lynn 01036: </strong><br />It&#39;s been a very bad time.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Tell me, Tom, how does it feel to walk in a room knowing that there are people over there who are thinking, That&#39;s the guy that tried to kill his wife?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Tom 01036: </strong><br />Basically just tears your heart out. I grew up in this town, and a small town, a lot of people talk. They, you know, I walk in a room and I can feel them pointing, talking. Well, they&#39;ll speak to me, but as soon as they get through speaking to them, they&#39;ll turn to the person next to them, and I can -- I just I can imagine what they&#39;re saying is, you know, he tried to kill his wife.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />So what&#39;s it, what&#39;s it doing to y&#39;all&#39;s relationship? I mean, anytime you put stress and pressure on, I know it&#39;s got to hurt. And you guys are now living in this little trailer.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Lynn 01036: </strong><br />We&#39;ve been living in this little trailer for four years, and you put that kind of stress, along with the stress of going through the investigation of them, trying to convince me that my husband tried to kill me. And it&#39;s, we are doing really good just to survive day to day. We&#39;re doing really good just to be able to function.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />So they came to you in the hospital, the police, the authorities, and kind of said, you know, looking over the shoulder, hey, your husband&#39;s tried to poison you here.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Lynn 01036: </strong><br />The hospital authorities notified the local authorities in the town where we live. And the local authorities were at our house within an hour after I got home from the hospital.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Did you suspect, I mean, did they, did they convince you that this may have happened? I mean, did they get you? Because, I mean, I suppose you&#39;d have to wonder. Did it ever cross your mind that maybe he had didn&#39;t like your cooking or something? Try trying to get even --</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Lynn 01036: </strong><br />I was never convinced that my husband was trying to kill me. I was convinced that someone was trying to kill me. My greatest fear was that we would never know who it was or what it was.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Now they took you all to the grand jury, right?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Lynn 01036: </strong><br />Right.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />They took this case to the grand jury and tried to get you indicted.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Tom 01036: </strong><br />Yes.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Did they tell you they were taking it to the grand jury?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Tom 01036: </strong><br />No.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />So you didn&#39;t even know?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Tom 01036: </strong><br />I didn&#39;t know it until after it came out in a newspaper article.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />So you read it in the newspaper?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Tom 01036: </strong><br />Yes.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />That&#39;s -- Let&#39;s see who won, whoa. So you saw in the newspaper that they had taken you in there with a charge of attempted murder. What did you face if you had been convicted of attempted murder? I mean, how many years were you? Was this, like, 20 years? 30 years life? What is it?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Tom 01036: </strong><br />15 to life, I imagine.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />15 to life?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Tom 01036: </strong><br />Yeah.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Alright. So how did you get? --</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Tom 01036: </strong><br />I&#39;m not very good at close quarters. That 30-foot travel trailer just is not, you know --</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Yeah, well, of course, my, -- the thing that It frustrates me so much about this for y&#39;all is this happens when it when you were vindicated. And at this point, there is absolutely no question, no doubt, that you didn&#39;t try to poison your wife. Correct?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Tom 01036: </strong><br />Correct.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Because they have found out that this treated lumber has arsenic in it. And in fact, you had higher levels than she did. That was in the tape piece, right?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Tom 01036: </strong><br />Right.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Y&#39;all get that? Y&#39;all, y&#39;all get that, both? So you were trying to poison yourself, too? Well, what, what genius decided to not check you out &#39;cause you were having fever and not feeling well? Also, did they not think that maybe somebody was trying to poison both of you?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Tom 01036: </strong><br />Well, the focus was mainly that my wife was sick. They didn&#39;t look at me being sick. They were looking at trying to pin attempted murder rap on me. Instead of looking at whether or not I was sick.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />But see, we live -- the problem that I have with this. And I think you guys are the same way. We live in what I call a sound bite society. I mean, people say, okay, look here. Headline-breaking story, whatever. Man tries to poison wife. Okay, so that&#39;s etched in their brain. And what is it that we want to believe these things? What is it that we just want to believe the worst about each other? So that hits the newspaper, and it gets all over town, I&#39;m sure, like a wildfire. So when it was obvious that it wasn&#39;t the case that both of you were being affected by this treated, wood I assume they called a town meeting down in the town square and said, &quot;We just want to set the record straight, he didn&#39;t do anything wrong, and we want to apologize to you.&quot; And I assume there was a three-inch screamer headline in the paper the next day. &#39;Man totally vindicated of all charges.&#39; I assume that all happened, right?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Tom 01036: </strong><br />Never.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />No.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Tom 01036: </strong><br />Never.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />No.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Tom 01036: </strong><br />It&#39;s still the case. Is still open. According to the city.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />The case is still open?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Tom 01036: </strong><br />It has not been closed.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Do you know why?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Tom 01036: </strong><br />I have no, no clue. Oh, my family has been there for generations. This would have would have really made the headlines for, for the city, you know, prominent citizen accused, you know, convicted of attempted murder on his wife.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />What do you want to see happen? What? What would it take in your town, in your community, in your life, to turn this clock back or unravel this in some way? To give you some peace of mind, give you some life back?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Lynn 01036: </strong><br />I&#39;d like for the city and the police department to come forth and tell us that. No, my husband did not try to murder me. That everyone recognizes what the FBI came up with, that it was the treated lumber. The timeline presented by the FBI, the hair samples that they took from us.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />So you want that aired out?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Lynn 01036: </strong><br />Yes.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />You want people to know that? Just, that just -- well, gee, golly darn, we&#39;re just too busy to prosecute him right now. You want them to know what you want people to know what the truth is?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Lynn 01036: </strong><br />I want people to know. They should know what the truth is.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Well, we&#39;re gonna work on that in just a minute. I&#39;m gonna tell Tom and Lynn why they&#39;re actually in mourning, and how Tom may, in fact, have gotten that prison sentence that he wished had gone away when we come back.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Announcer: </strong><br />Are you or your child suffering from the trauma of date rape? Were you raped by an acquaintance and don&#39;t know where to turn for help? Call (323) 520-7445 or log on to DrPhil.com.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Today, we&#39;re talking about the pain of being falsely accused, and it is a serious pain. Tom was wrongly charged with attempted murder in trying to poison his wife with arsenic, and says their lives have just been devastated since that time. Now, look, there&#39;s no way that we can erase what&#39;s happened, right? I mean, you get that. But if is there, -- is there anything anybody can do at this point? Is there anybody in the in the community, anybody with the authorities? Is there anything they can do that will ever make this okay? It would help. But would it ever make, make it okay what you went through?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Lynn 01036: </strong><br />It could never make it okay.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Yeah. So why is it important for you to do it?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Lynn 01036: </strong><br />I think we have to have some closure in order to get on with the rest of our lives.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Yeah, well, I agree with that. But where are you gonna get that? I mean, maybe they&#39;ll see this show, and maybe they&#39;ll hear that the thing they need to do is step up and admit a mistake. But then maybe they won&#39;t. But I mean, isn&#39;t this really up to you guys to put this behind you?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Tom 01036: </strong><br />Yeah.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />You know, there&#39;s something that -- and I bet you guys will recognize this when you hear it. You know, we always hear about guilt by association.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Tom 01036: </strong><br />Right.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />That is, if you kind of roll with pigs, you&#39;re gonna get muddy. But there&#39;s something else that we don&#39;t talk about much. That&#39;s called guilt by accusation. Guilt by accusation, and isn&#39;t there a, you know, I said to you guys, when you hear something, a part of you believes it. It&#39;s just kind of like we tend to just knee-jerk react. And a phenomenon that I&#39;ve seen in, in human beings is if you accuse them of something that they know they didn&#39;t do. There&#39;s still a little twinge of guilt just by having the finger pointed at you, isn&#39;t there? Did you feel that?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Tom 01036: </strong><br />Oh, yes, all the time. You know, it&#39;s not -- I said that I didn&#39;t do it. Well, not my wife said that I didn&#39;t do it. You still feel that people are still behind you, pointing and saying.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />Yeah, kind of whispering behind you and all that kind of stuff. And so the point is that what I&#39;m saying is a big part of this, that closure you&#39;re talking about has to happen with you guys, because you&#39;re still reacting to what you think people may be thinking about you, and they may.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Tom 01036: </strong><br />Yeah.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />And you know what? If they are, they just are. But there&#39;s a point at which you&#39;ve got to say the prison that you live in, if you let yourself be intimidated, if you let yourself feel guilty by accusation. If you feel like you could shrink away because of what people may think about you, then you&#39;ve put yourself in prison. You&#39;ve put yourself in an emotional prison where you don&#39;t hold your head up walking down the street. You don&#39;t feel the sense of, of freedom and rightness about what you&#39;re doing. There comes a point where you&#39;ve got to say to yourself, you know what, &quot;I, Tom, know the truth, and I know that, and I&#39;ll know that till the day I die. And I&#39;m gonna give myself what I wish I was getting from the community. I wish the community had the guts, had the backbone. The people who whisper behind my back and point don&#39;t really know. Just read a headline or heard it over at the Tastee Freez.&quot; And you know everything from the Tastee Freez is this gospel, right? And everything you heard at church, you know, it was it was whispered about in the parking lot at church. It&#39;s got to be true. You know, those people, they ought to come and say, hey, listen, I got caught up in this. I just didn&#39;t know. But I want to look you in the eye and tell you that I&#39;m sorry. You&#39;ve been through this, and I wish you well. And I want to be your friend. Wouldn&#39;t that be nice?</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Tom 01036: </strong><br />It would help a lot.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />And maybe they&#39;ll do that. But if they don&#39;t, you&#39;ve got to do it for yourself. You&#39;ve got to do it for yourself. You&#39;ve got to step up and say, I&#39;m taking my power back. These people don&#39;t pay my rent. These people don&#39;t come over and clean my house. My 35-foot shoebox house. I got left after all this happened. These people don&#39;t do that. So you know what? I&#39;m not gonna give them the power to pick my feelings. You know? They&#39;re wrong. They&#39;re absolutely wrong, and you&#39;re right. And you got to say, I&#39;m not gonna let them do that. I&#39;m gonna look myself in the mirror and give myself what I wish I was getting from somebody else. And maybe the paper will have the nerve to run something that, that says, &quot;Hey, we&#39;re gonna, we&#39;re gonna rally behind our guy. We&#39;re gonna set the record straight. Maybe that preacher will stand up at the pulpit up there and say, &quot;Hey, we got something bad that&#39;s happened in our community, and we want to do the right thing.&quot; You know, maybe the paper will do it, maybe the pastor will do it. Maybe your friends will step up and do it. But if and until they do, you&#39;ve got to do it for yourself. You&#39;ve got to give it to yourself and give it to each other. Will you do that? And I spent a lot of time in the legal arena. I spent a lot of time in the legal arena. That&#39;s like my day job. I look this, I look this thing over top, side, and bottom. And these people owe you folks a big apology, let me tell you. Okay. Next, I&#39;m gonna talk to you about what happened to me when I first walked into a grocery store and saw my face on a tabloid, accused of all kinds of nefarious and lascivious deeds. I&#39;ll tell you the decision I had to make before I committed to doing this show. We&#39;re talking to people who are the victims of false accusations and how they can move on from all the gossip. This is something I can relate to because I can tell you when I took the step into public life, which had been like really private before, I fastly learned that the more recognizable you become, the more interesting you are in the tabloids. These rags that you see all over the place and and I had to make a decision. And the decision was to take my power back. It&#39;s amazingly unfair to private citizens to be subjected to all this stuff. But when you step into the public arena, I kind of expect that it was a serious decision. It&#39;s kind of the ying and yang, because in America, we tend to build people up and then tear them down, and it has nothing to do with whether you do something right or whether you don&#39;t. I mean, you&#39;re falsely accused of murder. You&#39;re falsely accused of, of arson, whatever it might be. And, and for me, I had to make a decision. Because if your face will sell newspapers, they&#39;re gonna write about you. And the decision I made was, I know the truth.
+And the truth is, I&#39;m probably one of the most boring guys you&#39;ve ever seen in your life. But if it&#39;ll sell papers, they&#39;re gonna be there. I&#39;ve been accused of everything from the Irish potato famine to a romance with Mae West. I mean, I -- there was a story that a guy refused to sell me a newspaper on the street, a newspaper guy, because I had his wife so up in arms about their marriage. I never bought a newspaper on the street in my life. Stories about me being the one that stands between Oprah and Stedman, or -- I mean, for God&#39;s sake, you know, teen scandals. There&#39;s been things in there about me in starting this show, throwing chairs. And then I saw one recently where Oprah and I are taking long walks on her farm, hand in hand. If you knew my knees, I don&#39;t walk anywhere. But you just have to roll with it. And I made a decision that if you stop to defend yourself and you react to that, you&#39;re giving them the power and getting them to get you to take your eye off the ball. And I&#39;ve often said you wouldn&#39;t worry so much about what people thought of you if you knew how seldom they did. We&#39;ll be right back. For more info, log on to DrPhil.com. Get tickets. Be on the show. Get your questions answered all on DrPhil.com.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Announcer: </strong><br />Guests of the Dr. Phil show stay at the Renaissance Hollywood Hotel, the destination for luxury and comfort. Just steps away from Hollywood and Highland and the star-studded Walk of Fame.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;"><strong>Dr. Phil: </strong><br />If you&#39;re in L.A. and would like to be part of the studio audience, call us for tickets at (323) 461-Phi, that&#39;s (323) 461-7445. I wanna thank my guests for having the courage to come here today and stand up and say, I ain&#39;t going away. I am who I am, and I make no apology for it. My hope is that all of you and me will change the way we look at and judge people, whether it&#39;s your neighbor or somebody you read about in the newspaper. We&#39;re a sound bite society. We read it and think, boy, where there&#39;s smoke, there&#39;s fire. And that&#39;s not always true. If you&#39;re gonna react, do your homework first. Thanks. And I&#39;ll see you tomorrow. I want to thank my guest for having the courage to come here today and stand up and say, I ain&#39;t going away. I am who I am, and I make no apology for it. My hope is that all of you and me will change the way we look at and judge people, whether it&#39;s your neighbor or somebody you read about in the newspaper; we&#39;re a sound-bite society. We read it and think, boy, where there&#39;s smoke, there&#39;s fire. And that&#39;s not always true. If you&#39;re gonna react, do your homework first. Thanks, and I&#39;ll see you tomorrow.</p><p style="font-size: 14px;color: #3E3E3B;text-decoration: none;">&gt;&gt;&gt;GM CT&lt;&lt;&lt;</p><h3 style="font-size: 14px;line-height: 18px;color: #3E3E3B;text-decoration: none;display:inline;"><a href="https://sonix.ai/?utm_source=embed" style="font-size: 14px;color: #3E3E3B;text-decoration: none;" target="_blank" title="Sonix is the best automated transcription service online">Sonix </a>is the world’s most advanced <a href="https://sonix.ai/automated-transcription?utm_source=embed" style="font-size: 14px;color: #3E3E3B;text-decoration: none;" target="_blank" title="Best automated transcription service">automated transcription, </a><a href="https://sonix.ai/translation?utm_source=embed" style="font-size: 14px;color: #3E3E3B;text-decoration: none;" target="_blank" title="Accurate automated translation with Sonix">translation, and </a><a href="https://sonix.ai/automated-subtitles-and-captions?utm_source=embed" style="font-size: 14px;color: #3E3E3B;text-decoration: none;" target="_blank" title="Easily create and edit subtitles with Sonix">subtitling platform. </a><a href="https://sonix.ai/fast-transcription?utm_source=embed" style="font-size: 14px;color: #3E3E3B;text-decoration: none;" target="_blank" title="Fast automated transcription &amp; translation">Fast, </a><a href="https://sonix.ai/automated-transcription?utm_source=embed" style="font-size: 14px;color: #3E3E3B;text-decoration: none;" target="_blank" title="Accurate automated transcription &amp; translation">accurate, </a>and <a href="https://sonix.ai/pricing?utm_source=embed" style="font-size: 14px;color: #3E3E3B;text-decoration: none;" target="_blank" title="Affordable automated transcription &amp; translation">affordable. </a></h3><h4 style="font-size:14px!important;color:#3E3E3B!important;text-decoration:none!important;display:inline;"><a href="https://sonix.ai/best-mov-to-text-converter?utm_source=embed" style="font-size: 14px;color: #3E3E3B;text-decoration: none;" target="_blank" title="Automatically convert your mov files to text">Automatically convert your mov files to text </a><a href="https://sonix.ai/how-to-convert-mov-to-text?utm_source=embed" style="font-size: 14px;color: #3E3E3B;text-decoration: none;" target="_blank" title="Accurately convert mov to a txt file with Sonix">(txt file), </a><a href="https://sonix.ai/how-to-convert-mov-to-docx?utm_source=embed" style="font-size: 14px;color: #3E3E3B;text-decoration: none;" target="_blank" title="Accurately convert mov to docx with Sonix">Microsoft Word (docx file), </a>and <a href="https://sonix.ai/how-to-convert-mov-to-srt?utm_source=embed" style="font-size: 14px;color: #3E3E3B;text-decoration: none;" target="_blank" title="Accurately convert mov to srt with Sonix">SubRip Subtitle (srt file) </a>in minutes. </h4><p style="font-size:14px!important;color:#3E3E3B!important;text-decoration:none!important;display:inline;"><a href="https://sonix.ai/" style="font-size: 14px;color: #3E3E3B;text-decoration: none;" target="_blank" title="Best automated transcription, translation, and subtitling service">Sonix </a>has many features that you'd love including <a style="font-size: 14px;color: #3E3E3B;text-decoration: none;" title="share transcripts" target="_blank" href="https://sonix.ai/features/share-and-publish?utm_source=embed">share transcripts</a>, <a style="font-size: 14px;color: #3E3E3B;text-decoration: none;" title="automatic transcription software" target="_blank" href="https://sonix.ai/automated-transcription?utm_source=embed">automatic transcription software</a>, <a style="font-size: 14px;color: #3E3E3B;text-decoration: none;" title="automated subtitles" target="_blank" href="https://sonix.ai/features/automated-subtitles?utm_source=embed">automated subtitles</a>, <a style="font-size: 14px;color: #3E3E3B;text-decoration: none;" title="secure transcription and file storage" target="_blank" href="https://sonix.ai/features/security?utm_source=embed">secure transcription and file storage</a>, and <a href="https://sonix.ai/how-to-transcribe-a-zoom-meeting?utm_source=embed" style="font-size: 14px;color: #3E3E3B;text-decoration: none;" target="_blank" title="Quickly and accurately transcribe your Zoom meetings and recordings with Sonix">easily transcribe your Zoom meetings. </a><a href="https://sonix.ai/accounts/sign_up?utm_source=embed" style="font-size: 14px;color: #3E3E3B;text-decoration: none;" target="_blank" title="Try Sonix for free today">Try Sonix for free today. </a>
+
+</p></div><div class="sonix--embeddable sonix-embed-video" data-disable-analytics="false" data-sonix-id="GuitykQeHNeGMRqY2C5AJ7Hp" style="position: absolute !important;top:0 !important;bottom: 0 !important;left: 0 !important; right: 0!important;"><div class="sonix--javascript"><script type="text/javascript">
+  (function(s,o,n,i,x) {
+    if(s[n])return;s[n]=true;
+    var j=o.createElement('script');j.type='text/javascript',j.async=true,j.src=i,o.head.appendChild(j);
+    var css=o.createElement("link");css.type="text/css",css.rel="stylesheet",css.href=x,o.head.appendChild(css)
+  })(window,document, "__sonix_video","https://sonix.ai/widget_video.js","https://sonix.ai/widget.css");
+<\/script></div></div></div>
+<!-- END SONIX EMBED CODE -->
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal Logic
+        const modal = document.getElementById("videoModal");
+        const btn = document.getElementById("openModalBtn");
+        const span = document.getElementsByClassName("close")[0];
+
+        // Open Modal
+        btn.onclick = function() {
+            modal.style.display = "flex"; // Must set display flex before opacity for transition
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 10);
+        }
+
+        // Close Modal via 'X'
+        span.onclick = function() {
+            closeModal();
+        }
+
+        // Close Modal via clicking outside content
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        function closeModal() {
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.style.display = "none";
+            }, 300); // Wait for opacity transition
+        }
+
+        // Animation for main content load
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.querySelector('.animate-fade-in-up');
+            container.style.opacity = '0';
+            container.style.transform = 'translateY(20px)';
+            container.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+            
+            setTimeout(() => {
+                container.style.opacity = '1';
+                container.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    <\/script>
+</body>
+</html>`;
+    
+    // Global function to open the Brand Presentation in the overlay
+    window.openBrandPresentation = function() {
+        const overlay = document.getElementById('brand-overlay');
+        const iframe = document.getElementById('brand-iframe');
+        if (overlay && iframe) {
+            iframe.srcdoc = brandPresentationCode;
+            overlay.classList.remove('hidden');
+            overlay.classList.add('flex'); // Use flex to center if needed
+        }
+    };
+
+    // Global function to close the overlay
+    window.closeBrandOverlay = function() {
+        const overlay = document.getElementById('brand-overlay');
+        const iframe = document.getElementById('brand-iframe');
+        if (overlay && iframe) {
+            overlay.classList.add('hidden');
+            overlay.classList.remove('flex');
+            // Clear srcdoc to stop any audio/video playing
+            setTimeout(() => { iframe.srcdoc = ''; }, 100); 
+        }
+    };
+    
+    // Global function for Abstract Demo
+    window.openAbstractDemo = function() {
+        const overlay = document.getElementById('brand-overlay');
+        const iframe = document.getElementById('brand-iframe');
+        if (overlay && iframe) {
+            iframe.srcdoc = abstractDemoCode;
+            overlay.classList.remove('hidden');
+            overlay.classList.add('flex');
+        }
+    };
+    
+    // Fallback/Generic Demo Opener
+    window.openSonixDemo = function() {
+        const overlay = document.getElementById('brand-overlay');
+        const iframe = document.getElementById('brand-iframe');
+        if (overlay && iframe) {
+            iframe.srcdoc = sonixDemoCode;
+            overlay.classList.remove('hidden');
+            overlay.classList.add('flex');
+        }
+    }
+    </script>
+  </body>
+</html>
