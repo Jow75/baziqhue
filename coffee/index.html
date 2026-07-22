@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Buy me a coffee — tip for great service. Pay securely with Google Pay or card via Paystack.">
+  <title>Buy Me Coffee ☕</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://js.paystack.co/v2/inline.js"></script>
+  <script async src="https://pay.google.com/gp/p/js/pay.js" onload="onGooglePayLoaded()"></script>
+</head>
+<body>
+
+  <div class="app-wrapper">
+
+    <!-- ─── Header ─── -->
+    <header class="checkout-header">
+      <div class="checkout-header__logo">
+        <div class="checkout-header__icon">☕</div>
+        <span class="checkout-header__brand">Buy Me Coffee</span>
+      </div>
+      <h1 class="checkout-header__title">Support My Work</h1>
+      <p class="checkout-header__subtitle">Enjoyed my service? Buy me a coffee as a thank you — every tip means the world!</p>
+      <div class="env-badge env-badge--live">
+        <span class="env-badge__dot"></span>
+        Live
+      </div>
+    </header>
+
+    <!-- ─── Supporter Reviews (scrolling) ─── -->
+    <section class="supporters-section" aria-label="Recent Supporters">
+      <div class="card-label">☕ Recent Supporters</div>
+      <div class="supporters-track-wrapper">
+        <div class="supporters-track" id="supporters-track">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Main Container ─── -->
+    <main class="checkout-container">
+
+      <!-- ── Amount Selection ── -->
+      <section class="glass-card" aria-label="Choose Amount">
+        <div class="card-label">Choose Your Tip</div>
+
+        <!-- Currency Toggle -->
+        <div class="currency-toggle">
+          <button class="currency-toggle__btn active" data-currency="USD">
+            <span>🇺🇸</span> USD
+          </button>
+          <button class="currency-toggle__btn" data-currency="KES">
+            <span>🇰🇪</span> KES
+          </button>
+        </div>
+
+        <!-- Preset Amounts -->
+        <div class="amount-grid" id="amount-grid"></div>
+
+        <!-- Custom Amount — symbol OUTSIDE the box -->
+        <div class="custom-amount">
+          <label for="custom-amount">Or enter any amount</label>
+          <div class="custom-amount__wrapper">
+            <span class="custom-amount__symbol" id="custom-amount-symbol">$</span>
+            <input
+              type="number"
+              id="custom-amount"
+              class="custom-amount__input"
+              min="1"
+              step="any"
+              placeholder="Enter custom amount"
+              autocomplete="off"
+            >
+          </div>
+        </div>
+
+        <!-- Total -->
+        <div class="total-display">
+          <span class="total-display__label">You're tipping</span>
+          <span class="total-display__amount" id="total-amount">$5</span>
+        </div>
+      </section>
+
+      <!-- ── Payment ── -->
+      <section class="glass-card" aria-label="Payment">
+        <div class="card-label">Pay Securely</div>
+
+        <div class="input-group">
+          <label for="customer-email">Your Email</label>
+          <input type="email" id="customer-email" placeholder="you@example.com" autocomplete="email" required>
+        </div>
+
+        <div class="message-group">
+          <label for="tip-message">Leave a message (optional)</label>
+          <textarea id="tip-message" placeholder="Thanks for the great work!"></textarea>
+        </div>
+
+        <button type="button" class="btn btn--paystack" id="paystack-pay-btn">
+          <span>☕</span> Buy Coffee — $5
+        </button>
+
+        <div class="separator">or pay with</div>
+
+        <div id="gpay-button-container">
+          <div class="gpay-skeleton"></div>
+        </div>
+
+        <div class="security-badge">
+          <span>🔒</span> Secured by Paystack &amp; Google Pay
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ─── Footer ─── -->
+    <footer class="checkout-footer">
+      <p>Powered by <a href="https://paystack.com" target="_blank" rel="noopener">Paystack</a> &amp; <a href="https://pay.google.com" target="_blank" rel="noopener">Google Pay</a></p>
+      <p style="margin-top:4px;">🔐 All transactions are encrypted and PCI-DSS compliant.</p>
+    </footer>
+
+  </div>
+
+  <!-- ═══ Receipt Modal ═══ -->
+  <div class="receipt-overlay" id="receipt-overlay">
+    <div class="receipt-card">
+      <div class="receipt-card__icon">✓</div>
+      <div class="receipt-card__title">Payment Successful!</div>
+      <div class="receipt-card__subtitle">Thank you for buying me a coffee ☕</div>
+
+      <div class="receipt-card__details">
+        <div class="receipt-row">
+          <span class="receipt-row__label">Reference</span>
+          <span class="receipt-row__value" id="receipt-ref">—</span>
+        </div>
+        <div class="receipt-row">
+          <span class="receipt-row__label">Date</span>
+          <span class="receipt-row__value" id="receipt-date">—</span>
+        </div>
+        <div class="receipt-row">
+          <span class="receipt-row__label">Email</span>
+          <span class="receipt-row__value" id="receipt-email">—</span>
+        </div>
+        <div class="receipt-row">
+          <span class="receipt-row__label">Service</span>
+          <span class="receipt-row__value" id="receipt-service">—</span>
+        </div>
+        <div class="receipt-row">
+          <span class="receipt-row__label">Currency</span>
+          <span class="receipt-row__value" id="receipt-currency">—</span>
+        </div>
+        <div class="receipt-row">
+          <span class="receipt-row__label">Message</span>
+          <span class="receipt-row__value" id="receipt-message">—</span>
+        </div>
+        <div class="receipt-row receipt-row--total">
+          <span class="receipt-row__label">Amount Paid</span>
+          <span class="receipt-row__value" id="receipt-amount">—</span>
+        </div>
+      </div>
+
+      <div class="receipt-actions">
+        <button class="btn--receipt-download" id="receipt-download-btn">📄 Download Receipt</button>
+        <button class="btn--receipt-close" id="receipt-close-btn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

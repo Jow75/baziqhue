@@ -135,6 +135,318 @@
 </head>
   <body>
     <div id="root"></div>
+
+    <!-- ☕ BUY ME COFFEE — NAV INJECTION -->
+    <style>
+      /* Coffee button inside nav */
+      #bmc-nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 18px;
+        background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+        color: #fff !important;
+        font-size: 0.82rem;
+        font-weight: 700;
+        border-radius: 999px;
+        border: none;
+        cursor: pointer;
+        text-decoration: none !important;
+        letter-spacing: 0.02em;
+        box-shadow: 0 2px 12px rgba(249,115,22,0.35);
+        transition: all 0.2s ease;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      #bmc-nav-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 20px rgba(249,115,22,0.55);
+        background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+      }
+      #bmc-nav-btn .bmc-icon { font-size: 1rem; line-height: 1; }
+
+      /* Fallback: floating button if nav inject fails */
+      #bmc-float-btn {
+        position: fixed;
+        bottom: 28px;
+        right: 28px;
+        z-index: 8888;
+        display: none;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 22px;
+        background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+        color: #fff;
+        font-size: 0.88rem;
+        font-weight: 700;
+        border-radius: 999px;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 24px rgba(249,115,22,0.45);
+        transition: all 0.2s ease;
+        font-family: 'Inter', sans-serif;
+      }
+      #bmc-float-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(249,115,22,0.6); }
+
+      /* Full-screen overlay for the coffee page */
+      #bmc-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 10000;
+        background: rgba(0,0,0,0.85);
+        backdrop-filter: blur(8px);
+        align-items: center;
+        justify-content: center;
+      }
+      #bmc-overlay.bmc-open { display: flex; }
+      #bmc-overlay-close {
+        position: absolute;
+        top: 16px; right: 20px;
+        background: rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.15);
+        border-radius: 50%;
+        width: 40px; height: 40px;
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer; color: #fff; font-size: 1.2rem;
+        transition: background 0.2s;
+        z-index: 10001;
+      }
+      #bmc-overlay-close:hover { background: rgba(255,255,255,0.2); }
+      #bmc-iframe-wrap {
+        width: min(520px, 96vw);
+        height: min(700px, 94vh);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 32px 80px rgba(0,0,0,0.7);
+        animation: bmc-slide-in 0.35s cubic-bezier(0.22,1,0.36,1) forwards;
+      }
+      @keyframes bmc-slide-in {
+        from { opacity: 0; transform: scale(0.92) translateY(20px); }
+        to   { opacity: 1; transform: scale(1) translateY(0); }
+      }
+      #bmc-iframe {
+        width: 100%; height: 100%;
+        border: none; background: #0a0e1a;
+      }
+    </style>
+
+    <!-- Coffee overlay container -->
+    <div id="bmc-overlay">
+      <button id="bmc-overlay-close" title="Close">✕</button>
+      <div id="bmc-iframe-wrap">
+        <iframe id="bmc-iframe" src="" title="Buy Me Coffee" loading="lazy"></iframe>
+      </div>
+    </div>
+
+    <!-- Floating fallback button (shown if nav inject fails) -->
+    <button id="bmc-float-btn">
+      <span>☕</span> Buy Me Coffee
+    </button>
+
+    <script>
+      (function() {
+        var COFFEE_URL = '/coffee/index.html';
+
+        function openCoffee() {
+          var overlay = document.getElementById('bmc-overlay');
+          var iframe  = document.getElementById('bmc-iframe');
+          if (!iframe.src || iframe.src === window.location.href) {
+            iframe.src = COFFEE_URL;
+          }
+          overlay.classList.add('bmc-open');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeCoffee() {
+          document.getElementById('bmc-overlay').classList.remove('bmc-open');
+          document.body.style.overflow = '';
+        }
+
+        document.getElementById('bmc-overlay-close').addEventListener('click', closeCoffee);
+        document.getElementById('bmc-overlay').addEventListener('click', function(e) {
+          if (e.target === this) closeCoffee();
+        });
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') closeCoffee();
+        });
+
+        function createNavBtn() {
+          var btn = document.createElement('button');
+          btn.id = 'bmc-nav-btn';
+          btn.setAttribute('aria-label', 'Buy Me Coffee');
+          btn.innerHTML = '<span class="bmc-icon">☕</span> Buy Me Coffee';
+          btn.addEventListener('click', openCoffee);
+          return btn;
+        }
+
+        function createHeroBtn() {
+          var btn = document.createElement('button');
+          btn.id = 'bmc-hero-btn';
+          btn.setAttribute('aria-label', 'Buy Me Coffee');
+          btn.innerHTML = '☕ BUY ME COFFEE';
+          btn.addEventListener('click', openCoffee);
+          // Style matches the HIRE ME hero button look
+          btn.style.cssText = [
+            'display:inline-flex',
+            'align-items:center',
+            'gap:8px',
+            'padding:14px 28px',
+            'background:transparent',
+            'color:#f97316',
+            'border:1.5px solid #f97316',
+            'border-radius:4px',
+            'font-size:0.8rem',
+            'font-weight:700',
+            'letter-spacing:0.12em',
+            'cursor:pointer',
+            'text-transform:uppercase',
+            'white-space:nowrap',
+            'font-family:Inter,sans-serif',
+            'transition:all 0.2s ease',
+            'box-shadow:0 0 0 transparent'
+          ].join(';');
+          btn.addEventListener('mouseenter', function() {
+            this.style.background = '#f97316';
+            this.style.color = '#fff';
+            this.style.boxShadow = '0 0 18px rgba(249,115,22,0.45)';
+          });
+          btn.addEventListener('mouseleave', function() {
+            this.style.background = 'transparent';
+            this.style.color = '#f97316';
+            this.style.boxShadow = '0 0 0 transparent';
+          });
+          return btn;
+        }
+
+        function injectIntoHero() {
+          // Find the hero row containing WATCH REEL / PORTFOLIO / HIRE ME buttons
+          var allBtns = document.querySelectorAll('a, button');
+          var hireHeroEl = null;
+          // Find the HIRE ME in the hero (not in nav — it's usually inside a section/main)
+          for (var i = 0; i < allBtns.length; i++) {
+            var txt = allBtns[i].textContent.trim().toUpperCase();
+            if ((txt === 'HIRE ME' || txt === 'HIRE ME') && !allBtns[i].closest('nav') && !allBtns[i].closest('header')) {
+              hireHeroEl = allBtns[i];
+              break;
+            }
+          }
+          if (hireHeroEl && !document.getElementById('bmc-hero-btn')) {
+            var heroBtn = createHeroBtn();
+            hireHeroEl.parentNode.insertBefore(heroBtn, hireHeroEl.nextSibling);
+            return true;
+          }
+          return false;
+        }
+
+        function injectIntoNav() {
+          // Find HIRE ME in the nav/header specifically
+          var allLinks = document.querySelectorAll('nav a, nav button, header a, header button');
+          var hireEl = null;
+          for (var i = 0; i < allLinks.length; i++) {
+            var txt = allLinks[i].textContent.trim().toLowerCase();
+            if (txt.includes('hire') || txt === 'hire me') {
+              hireEl = allLinks[i];
+              break;
+            }
+          }
+          // fallback: search all
+          if (!hireEl) {
+            var all = document.querySelectorAll('a, button');
+            for (var j = 0; j < all.length; j++) {
+              var t = all[j].textContent.trim().toLowerCase();
+              if (t === 'hire me' || t === 'hire') { hireEl = all[j]; break; }
+            }
+          }
+
+          if (hireEl && !document.getElementById('bmc-nav-btn')) {
+            var navBtn = createNavBtn();
+            hireEl.parentNode.insertBefore(navBtn, hireEl.nextSibling);
+            return true;
+          }
+
+          // Fallback: end of nav
+          var nav = document.querySelector('nav') || document.querySelector('header');
+          if (nav && !document.getElementById('bmc-nav-btn')) {
+            nav.appendChild(createNavBtn());
+            return true;
+          }
+
+          return false;
+        }
+
+        function injectFooterCTA() {
+          if (document.getElementById('bmc-footer-cta')) return false;
+
+          var cta = document.createElement('section');
+          cta.id = 'bmc-footer-cta';
+          cta.style.cssText = 'padding: 80px 20px; background: #050505; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; color: #fff; font-family: "Inter", sans-serif; position: relative; z-index: 10; margin-top: auto;';
+          
+          cta.innerHTML = `
+            <div style="max-width: 800px; margin: 0 auto;">
+              <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; color: #fff; letter-spacing: -0.02em;">START A PROJECT</h2>
+              <p style="font-size: 1.1rem; color: #a3a3a3; margin-bottom: 35px; line-height: 1.6;">
+                Ready to elevate your brand? Fill out the form below or contact me directly.<br/>
+                Book for a reliable virtual assistant, let's describe your personal needs.
+              </p>
+              <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
+                <a href="mailto:georgemuraguri19@gmail.com" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border: 1px solid #333; border-radius: 4px; color: #fff; text-decoration: none; font-weight: 600; transition: all 0.2s;" onmouseover="this.style.borderColor='#fff'; this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.borderColor='#333'; this.style.background='transparent'">✉️ Email</a>
+                <a href="https://www.upwork.com/freelancers/~018adabc1e2a7601e1?mp_source=share" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border: 1px solid #14a800; border-radius: 4px; color: #14a800; text-decoration: none; font-weight: 600; transition: all 0.2s;" onmouseover="this.style.background='#14a800'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#14a800'">💼 Upwork</a>
+                <a href="https://wa.me/254799553292" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border: 1px solid #25D366; border-radius: 4px; color: #25D366; text-decoration: none; font-weight: 600; transition: all 0.2s;" onmouseover="this.style.background='#25D366'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#25D366'">💬 WhatsApp</a>
+                <button onclick="document.getElementById('bmc-overlay').classList.add('bmc-open'); document.body.style.overflow='hidden';" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); border: none; border-radius: 4px; color: #fff; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(249,115,22,0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(249,115,22,0.5)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(249,115,22,0.3)'">☕ Buy Me Coffee</button>
+              </div>
+            </div>
+          `;
+          
+          var root = document.getElementById('root');
+          if (root) {
+            root.appendChild(cta);
+          } else {
+            document.body.appendChild(cta);
+          }
+          return true;
+        }
+
+        function tryInject() {
+          var navDone  = injectIntoNav();
+          var heroDone = injectIntoHero();
+          injectFooterCTA(); // Always try to inject the footer CTA
+
+          if (!navDone && !heroDone) {
+            // Show floating button as last fallback
+            var floatBtn = document.getElementById('bmc-float-btn');
+            floatBtn.style.display = 'flex';
+            floatBtn.addEventListener('click', openCoffee);
+          }
+        }
+
+        // React renders async — observe DOM until nav appears
+        var injected = false;
+        var observer = new MutationObserver(function() {
+          if (injected) return;
+          if (document.querySelector('nav') || document.querySelector('header')) {
+            setTimeout(function() {
+              if (!injected) {
+                injected = true;
+                tryInject();
+                observer.disconnect();
+              }
+            }, 400);
+          }
+        });
+
+        observer.observe(document.body, { childList: true, subtree: true });
+
+        // Hard fallback — 5s
+        setTimeout(function() {
+          if (!injected) {
+            injected = true;
+            observer.disconnect();
+            tryInject();
+          }
+        }, 5000);
+      })();
+    </script>
     
     <!-- BRAND PRESENTATION OVERLAY CONTAINER -->
     <div id="brand-overlay" class="fixed inset-0 z-[9999] hidden bg-black flex items-center justify-center">
