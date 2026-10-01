@@ -663,6 +663,14 @@ function initPaystackCheckout() {
       lastName = parts.slice(1).join(' ') || '';
     }
 
+    // Clean and normalize phone number for Paystack Customer profile & M-Pesa
+    let cleanPhone = phone.replace(/[\s\-\(\)]/g, '');
+    if (cleanPhone.startsWith('0') && state.currency === 'KES') {
+      cleanPhone = '+254' + cleanPhone.substring(1);
+    } else if (cleanPhone && !cleanPhone.startsWith('+')) {
+      if (state.currency === 'KES') cleanPhone = '+254' + cleanPhone;
+    }
+
     try {
       const popup = new PaystackPop();
       popup.checkout({
@@ -672,12 +680,14 @@ function initPaystackCheckout() {
         currency: state.currency,
         firstname: firstName || undefined,
         lastname: lastName || undefined,
-        phone: phone || undefined,
+        phone: cleanPhone || phone || undefined,
         ref: 'BMC_' + Date.now() + '_' + Math.random().toString(36).substring(2, 8),
         metadata: {
+          phone: cleanPhone || phone,
+          phone_number: cleanPhone || phone,
           custom_fields: [
             { display_name: 'Customer Name', variable_name: 'customer_name', value: name || 'Anonymous' },
-            { display_name: 'Phone Number', variable_name: 'phone_number', value: phone || '—' },
+            { display_name: 'Phone Number', variable_name: 'phone_number', value: cleanPhone || phone || '—' },
             { display_name: 'Service', variable_name: 'service', value: 'Buy Me Coffee (Creative Support)' },
             { display_name: 'Tip Amount', variable_name: 'tip_amount', value: formatAmount(state.amount) },
             { display_name: 'Message', variable_name: 'message', value: message || '—' },
@@ -934,6 +944,9 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCustomPlaceholder();
   initPaystackCheckout();
   renderSupporters();
+
+  // Auto-refresh relative time badges every 30 seconds
+  setInterval(renderSupporters, 30000);
 
   // Make coffee cup icon interactive
   const cupIcon = document.getElementById('coffee-cup-icon');

@@ -235,7 +235,7 @@
     <div id="bmc-overlay">
       <button id="bmc-overlay-close" title="Close">✕</button>
       <div id="bmc-iframe-wrap">
-        <iframe id="bmc-iframe" src="" title="Buy Me Coffee" loading="lazy"></iframe>
+        <iframe id="bmc-iframe" src="/coffee/index.html" title="Buy Me Coffee"></iframe>
       </div>
     </div>
 
@@ -251,7 +251,7 @@
         function openCoffee() {
           var overlay = document.getElementById('bmc-overlay');
           var iframe  = document.getElementById('bmc-iframe');
-          if (!iframe.src || iframe.src === window.location.href) {
+          if (!iframe.src || iframe.src.indexOf('/coffee/index.html') === -1) {
             iframe.src = COFFEE_URL;
           }
           overlay.classList.add('bmc-open');
@@ -262,6 +262,9 @@
           document.getElementById('bmc-overlay').classList.remove('bmc-open');
           document.body.style.overflow = '';
         }
+
+        window.openCoffee = openCoffee;
+        window.closeCoffee = closeCoffee;
 
         document.getElementById('bmc-overlay-close').addEventListener('click', closeCoffee);
         document.getElementById('bmc-overlay').addEventListener('click', function(e) {
@@ -393,7 +396,7 @@
                 <a href="mailto:georgemuraguri19@gmail.com" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border: 1px solid #333; border-radius: 4px; color: #fff; text-decoration: none; font-weight: 600; transition: all 0.2s;" onmouseover="this.style.borderColor='#fff'; this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.borderColor='#333'; this.style.background='transparent'">✉️ Email</a>
                 <a href="https://www.upwork.com/freelancers/~018adabc1e2a7601e1?mp_source=share" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border: 1px solid #14a800; border-radius: 4px; color: #14a800; text-decoration: none; font-weight: 600; transition: all 0.2s;" onmouseover="this.style.background='#14a800'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#14a800'">💼 Upwork</a>
                 <a href="https://wa.me/254799553292" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border: 1px solid #25D366; border-radius: 4px; color: #25D366; text-decoration: none; font-weight: 600; transition: all 0.2s;" onmouseover="this.style.background='#25D366'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#25D366'">💬 WhatsApp</a>
-                <button onclick="document.getElementById('bmc-overlay').classList.add('bmc-open'); document.body.style.overflow='hidden';" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); border: none; border-radius: 4px; color: #fff; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(249,115,22,0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(249,115,22,0.5)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(249,115,22,0.3)'">☕ Buy Me Coffee</button>
+                <button onclick="if(window.openCoffee){window.openCoffee();}else{document.getElementById('bmc-overlay').classList.add('bmc-open');}" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); border: none; border-radius: 4px; color: #fff; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(249,115,22,0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(249,115,22,0.5)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(249,115,22,0.3)'">☕ Buy Me Coffee</button>
               </div>
             </div>
           `;
