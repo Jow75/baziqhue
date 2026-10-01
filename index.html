@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BAZIQ HUE | Brand & Motion Design Studio for Tech & Luxury Brands</title>\n    <meta name="description" content="Award-winning motion design and brand strategy studio. We craft visual masterpieces for tech startups, luxury brands, and global events. View our portfolio." />
+    <title>BAZIQ HUE | Brand & Motion Design Studio for Tech & Luxury Brands</title>
+    <meta name="description" content="Award-winning motion design and brand strategy studio. We craft visual masterpieces for tech startups, luxury brands, and global events. View our portfolio." />
     <link rel="icon" href="https://i.imgur.com/xuTxEYN.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -117,9 +118,297 @@
       .transition-delay-300 { transition-delay: 300ms; }
       .transition-delay-400 { transition-delay: 400ms; }
       .transition-delay-500 { transition-delay: 500ms; }
-    </style>
 
-<link rel="stylesheet" href="/index.css">
+      /* ============================================================
+         CYBER-LUXE AMBIENT ENHANCEMENTS FOR SCROLL SECTIONS
+         ============================================================ */
+
+      /* 1. OUR EXPERTISE (#services) */
+      #services {
+        position: relative;
+        background-color: #050508 !important;
+        background-image: 
+          radial-gradient(circle 800px at 8% 25%, rgba(0, 240, 255, 0.08), transparent 70%),
+          radial-gradient(circle 750px at 92% 75%, rgba(168, 85, 247, 0.09), transparent 70%),
+          linear-gradient(to right, rgba(0, 240, 255, 0.025) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(0, 240, 255, 0.025) 1px, transparent 1px) !important;
+        background-size: 100% 100%, 100% 100%, 60px 60px, 60px 60px !important;
+      }
+
+      #services::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.35), rgba(168, 85, 247, 0.35), transparent);
+      }
+
+      #services h2 {
+        background: linear-gradient(135deg, #ffffff 40%, #00f0ff 90%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        letter-spacing: -0.01em;
+      }
+
+      #services .w-24.h-1 {
+        background: linear-gradient(90deg, #00f0ff, #a855f7) !important;
+        box-shadow: 0 0 20px rgba(0, 240, 255, 0.6) !important;
+        border-radius: 999px !important;
+        height: 3px !important;
+        width: 90px !important;
+      }
+
+      /* Expertise Columns: CORE CREATIVE & PROFESSIONAL SUPPORT */
+      #services .grid > div > .h-full {
+        background: linear-gradient(180deg, rgba(18, 22, 34, 0.55) 0%, rgba(10, 13, 20, 0.7) 100%) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 24px !important;
+        padding: 36px 32px !important;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+        transition: border-color 0.4s ease, box-shadow 0.4s ease !important;
+      }
+
+      #services .grid > div:first-child > .h-full {
+        box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.7), 0 0 35px -5px rgba(0, 240, 255, 0.06) !important;
+      }
+
+      #services .grid > div:last-child > .h-full {
+        box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.7), 0 0 35px -5px rgba(168, 85, 247, 0.06) !important;
+      }
+
+      #services .grid > div > .h-full:hover {
+        border-color: rgba(0, 240, 255, 0.3) !important;
+      }
+
+      /* Service Rows */
+      #services .space-y-2 > div {
+        background: rgba(255, 255, 255, 0.02) !important;
+        border: 1px solid rgba(255, 255, 255, 0.04) !important;
+        border-radius: 14px !important;
+        margin-bottom: 12px !important;
+        padding: 16px 18px !important;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      }
+
+      #services .space-y-2 > div:hover {
+        background: linear-gradient(135deg, rgba(0, 240, 255, 0.08) 0%, rgba(168, 85, 247, 0.06) 100%) !important;
+        border-color: rgba(0, 240, 255, 0.35) !important;
+        transform: translateX(6px) translateY(-2px);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 240, 255, 0.12) !important;
+      }
+
+      /* Service Icon Badges */
+      #services .space-y-2 > div > div:first-child {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 44px !important;
+        height: 44px !important;
+        border-radius: 12px !important;
+        background: rgba(0, 240, 255, 0.07) !important;
+        border: 1px solid rgba(0, 240, 255, 0.16) !important;
+        color: #00f0ff !important;
+        transition: all 0.3s ease !important;
+        margin-top: 0 !important;
+        flex-shrink: 0 !important;
+      }
+
+      #services .space-y-2 > div:hover > div:first-child {
+        background: rgba(0, 240, 255, 0.2) !important;
+        border-color: rgba(0, 240, 255, 0.5) !important;
+        box-shadow: 0 0 16px rgba(0, 240, 255, 0.5) !important;
+        color: #ffffff !important;
+        transform: scale(1.08);
+      }
+
+      #services .space-y-2 > div > div:first-child svg {
+        width: 22px !important;
+        height: 22px !important;
+      }
+
+      /* Service Interactive Buttons */
+      #services button {
+        border-radius: 999px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.06em !important;
+        transition: all 0.25s ease !important;
+      }
+
+      #services button:hover {
+        transform: translateY(-2px);
+      }
+
+      /* 2. THE PROCESS / WORKFLOW SECTION */
+      #services + section {
+        position: relative;
+        background: 
+          radial-gradient(ellipse 900px 500px at 50% 0%, rgba(0, 240, 255, 0.1), transparent 75%),
+          radial-gradient(circle 800px at 80% 90%, rgba(168, 85, 247, 0.07), transparent 70%),
+          #08090d !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.07) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+      }
+
+      #services + section h2 {
+        background: linear-gradient(135deg, #ffffff 40%, #00f0ff 90%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+      }
+
+      /* Process Cards */
+      #services + section .grid > div > div {
+        background: linear-gradient(180deg, rgba(20, 24, 36, 0.65) 0%, rgba(10, 13, 20, 0.8) 100%) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 20px !important;
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        position: relative;
+        overflow: hidden;
+      }
+
+      #services + section .grid > div > div::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.6), transparent);
+        opacity: 0;
+        transition: opacity 0.35s ease;
+      }
+
+      #services + section .grid > div > div:hover {
+        border-color: rgba(0, 240, 255, 0.45) !important;
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 25px 50px -12px rgba(0, 240, 255, 0.22), 0 0 30px rgba(0, 240, 255, 0.12) !important;
+      }
+
+      #services + section .grid > div > div:hover::before {
+        opacity: 1;
+      }
+
+      /* Step Numbers (01, 02, 03, 04) - Luminous cyber gradient */
+      #services + section span.text-5xl {
+        background: linear-gradient(135deg, rgba(0, 240, 255, 0.55) 0%, rgba(168, 85, 247, 0.35) 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        opacity: 0.75 !important;
+        font-weight: 900 !important;
+        transition: all 0.35s ease !important;
+      }
+
+      #services + section .grid > div > div:hover span.text-5xl {
+        background: linear-gradient(135deg, #00f0ff 0%, #c084fc 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        opacity: 1 !important;
+        filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.7));
+        transform: scale(1.08);
+      }
+
+      #services + section .w-2.h-2 {
+        position: relative;
+        box-shadow: 0 0 10px rgba(0, 240, 255, 0.9) !important;
+      }
+
+      /* 3. CASE STUDIES / SELECTED WORKS (#work) */
+      #work {
+        background: 
+          radial-gradient(circle 750px at 15% 35%, rgba(168, 85, 247, 0.08), transparent 70%),
+          radial-gradient(circle 750px at 85% 65%, rgba(0, 240, 255, 0.08), transparent 70%),
+          #050508 !important;
+      }
+
+      #work h2 {
+        background: linear-gradient(135deg, #ffffff 40%, #00f0ff 90%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+      }
+
+      #work .group.relative.block {
+        background: linear-gradient(135deg, rgba(18, 22, 34, 0.75) 0%, rgba(10, 13, 20, 0.9) 100%) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 20px !important;
+        overflow: hidden;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.7);
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      }
+
+      #work .group.relative.block:hover {
+        border-color: rgba(0, 240, 255, 0.45) !important;
+        transform: translateY(-6px);
+        box-shadow: 0 30px 65px -15px rgba(0, 240, 255, 0.25), 0 0 35px rgba(0, 240, 255, 0.12) !important;
+      }
+
+      #work .group.relative.block .w-full.md\:w-1\/2.p-8 {
+        background: transparent !important;
+      }
+
+      #work .group.relative.block p.text-primary {
+        display: inline-block;
+        background: rgba(0, 240, 255, 0.1);
+        border: 1px solid rgba(0, 240, 255, 0.3);
+        padding: 4px 12px;
+        border-radius: 999px;
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+        margin-bottom: 12px;
+      }
+
+      /* 4. CLIENTS (#clients) */
+      #clients {
+        background: radial-gradient(ellipse 800px 300px at 50% 50%, rgba(0, 240, 255, 0.06), transparent 80%), #07080c !important;
+      }
+
+      #clients svg text {
+        transition: all 0.3s ease;
+      }
+
+      #clients .grayscale:hover svg text {
+        fill: #00f0ff;
+        filter: drop-shadow(0 0 12px rgba(0, 240, 255, 0.7));
+      }
+
+      /* 5. ABOUT (#about) */
+      #about {
+        background: 
+          radial-gradient(circle 700px at 30% 50%, rgba(0, 240, 255, 0.06), transparent 70%),
+          radial-gradient(circle 600px at 80% 50%, rgba(168, 85, 247, 0.06), transparent 70%),
+          #050508 !important;
+      }
+
+      #about .relative.group .absolute {
+        border-color: rgba(0, 240, 255, 0.3) !important;
+        border-radius: 16px;
+        box-shadow: 0 0 30px rgba(0, 240, 255, 0.15);
+      }
+
+      #about img {
+        border-radius: 14px;
+      }
+
+      /* 6. CONTACT (#contact) */
+      #contact {
+        background: 
+          radial-gradient(ellipse 900px 600px at 50% 0%, rgba(0, 240, 255, 0.09), transparent 75%),
+          #050508 !important;
+      }
+
+      #contact h2 {
+        background: linear-gradient(135deg, #ffffff 40%, #00f0ff 90%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+      }
+    </style>
   <script type="importmap">
 {
   "imports": {
@@ -378,42 +667,9 @@
           return false;
         }
 
-        function injectFooterCTA() {
-          if (document.getElementById('bmc-footer-cta')) return false;
-
-          var cta = document.createElement('section');
-          cta.id = 'bmc-footer-cta';
-          cta.style.cssText = 'padding: 80px 20px; background: #050505; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; color: #fff; font-family: "Inter", sans-serif; position: relative; z-index: 10; margin-top: auto;';
-          
-          cta.innerHTML = `
-            <div style="max-width: 800px; margin: 0 auto;">
-              <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; color: #fff; letter-spacing: -0.02em;">START A PROJECT</h2>
-              <p style="font-size: 1.1rem; color: #a3a3a3; margin-bottom: 35px; line-height: 1.6;">
-                Ready to elevate your brand? Fill out the form below or contact me directly.<br/>
-                Book for a reliable virtual assistant, let's describe your personal needs.
-              </p>
-              <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
-                <a href="mailto:georgemuraguri19@gmail.com" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border: 1px solid #333; border-radius: 4px; color: #fff; text-decoration: none; font-weight: 600; transition: all 0.2s;" onmouseover="this.style.borderColor='#fff'; this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.borderColor='#333'; this.style.background='transparent'">✉️ Email</a>
-                <a href="https://www.upwork.com/freelancers/~018adabc1e2a7601e1?mp_source=share" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border: 1px solid #14a800; border-radius: 4px; color: #14a800; text-decoration: none; font-weight: 600; transition: all 0.2s;" onmouseover="this.style.background='#14a800'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#14a800'">💼 Upwork</a>
-                <a href="https://wa.me/254799553292" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border: 1px solid #25D366; border-radius: 4px; color: #25D366; text-decoration: none; font-weight: 600; transition: all 0.2s;" onmouseover="this.style.background='#25D366'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#25D366'">💬 WhatsApp</a>
-                <button onclick="if(window.openCoffee){window.openCoffee();}else{document.getElementById('bmc-overlay').classList.add('bmc-open');}" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); border: none; border-radius: 4px; color: #fff; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(249,115,22,0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(249,115,22,0.5)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(249,115,22,0.3)'">☕ Buy Me Coffee</button>
-              </div>
-            </div>
-          `;
-          
-          var root = document.getElementById('root');
-          if (root) {
-            root.appendChild(cta);
-          } else {
-            document.body.appendChild(cta);
-          }
-          return true;
-        }
-
         function tryInject() {
           var navDone  = injectIntoNav();
           var heroDone = injectIntoHero();
-          injectFooterCTA(); // Always try to inject the footer CTA
 
           if (!navDone && !heroDone) {
             // Show floating button as last fallback
