@@ -8,6 +8,9 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://js.paystack.co/v2/inline.js"></script>
   <script async src="https://pay.google.com/gp/p/js/pay.js" onload="onGooglePayLoaded()"></script>
+  <!-- Firebase Realtime Cloud Sync -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
 
@@ -16,7 +19,14 @@
     <!-- ─── Header ─── -->
     <header class="checkout-header">
       <div class="checkout-header__logo">
-        <div class="checkout-header__icon">☕</div>
+        <div class="checkout-header__icon" id="coffee-cup-icon" title="Buy me a coffee!">
+          <div class="steam-wrap">
+            <span class="steam steam--1"></span>
+            <span class="steam steam--2"></span>
+            <span class="steam steam--3"></span>
+          </div>
+          <span class="cup-emoji">☕</span>
+        </div>
         <span class="checkout-header__brand">Buy Me Coffee</span>
       </div>
       <h1 class="checkout-header__title">Support My Work</h1>
@@ -85,8 +95,22 @@
       <section class="glass-card" aria-label="Payment">
         <div class="card-label">Pay Securely</div>
 
+        <div class="input-grid">
+          <div class="input-group">
+            <label for="customer-name">Your Name or Nickname <span class="label-optional">(optional)</span></label>
+            <input type="text" id="customer-name" placeholder="e.g. Alex M. or just Alex" autocomplete="name">
+            <span class="input-hint">How you'd like to appear on recent supporters</span>
+          </div>
+
+          <div class="input-group">
+            <label for="customer-phone">Phone Number <span class="label-optional">(optional)</span></label>
+            <input type="tel" id="customer-phone" placeholder="e.g. +254 712 345 678" autocomplete="tel">
+            <span class="input-hint">Used for M-Pesa / payment confirmation</span>
+          </div>
+        </div>
+
         <div class="input-group">
-          <label for="customer-email">Your Email</label>
+          <label for="customer-email">Your Email <span class="label-required">*</span></label>
           <input type="email" id="customer-email" placeholder="you@example.com" autocomplete="email" required>
         </div>
 
@@ -120,6 +144,25 @@
 
   </div>
 
+  <!-- ═══ Celebration Overlay (Animated Clinking Cups) ═══ -->
+  <div class="celebration-overlay" id="celebration-overlay">
+    <div class="celebration-card">
+      <div class="clinking-cups-wrapper">
+        <div class="clinking-cup clinking-cup--left">☕</div>
+        <div class="clink-spark">✨</div>
+        <div class="clinking-cup clinking-cup--right">☕</div>
+      </div>
+      <h2 class="celebration-title">CHEERS! ☕✨</h2>
+      <p class="celebration-subtitle" id="celebration-subtitle">Thank you for buying me a coffee!</p>
+      <div class="celebration-badge" id="celebration-badge">☕ Tipped KSh 5</div>
+      <div class="celebration-actions">
+        <button type="button" class="btn--celebration-view" id="celebration-view-btn">
+          View Receipt Details →
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- ═══ Receipt Modal ═══ -->
   <div class="receipt-overlay" id="receipt-overlay">
     <div class="receipt-card">
@@ -137,8 +180,16 @@
           <span class="receipt-row__value" id="receipt-date">—</span>
         </div>
         <div class="receipt-row">
+          <span class="receipt-row__label">Name</span>
+          <span class="receipt-row__value" id="receipt-name">—</span>
+        </div>
+        <div class="receipt-row">
           <span class="receipt-row__label">Email</span>
           <span class="receipt-row__value" id="receipt-email">—</span>
+        </div>
+        <div class="receipt-row" id="receipt-phone-row" style="display:none;">
+          <span class="receipt-row__label">Phone</span>
+          <span class="receipt-row__value" id="receipt-phone">—</span>
         </div>
         <div class="receipt-row">
           <span class="receipt-row__label">Service</span>

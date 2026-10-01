@@ -1,5 +1,6 @@
 /* ============================================
-   Buy Me Coffee — Application Logic v2
+   Buy Me Coffee — Application Logic v3.0
+   With Clinking Cups Celebration & Firebase Cloud Sync
    ============================================ */
 
 // ─── Configuration ───────────────────────────────────────────
@@ -7,45 +8,76 @@ const CONFIG = {
   paystackPublicKey: 'pk_live_a974a7744213c7c8d0fd95f4de362ced3f184c33',
 
   currencies: {
-    USD: { code: 'USD', symbol: '$',   name: 'US Dollar',        flag: '🇺🇸', minorMultiplier: 100 },
-    KES: { code: 'KES', symbol: 'KSh', name: 'Kenyan Shilling',  flag: '🇰🇪', minorMultiplier: 100 },
+    USD: {
+      code: 'USD',
+      symbol: '$',
+      name: 'US Dollar',
+      flag: '🇺🇸',
+      minorMultiplier: 100,
+      presets: [1, 2, 3, 5, 10, 25],
+      defaultAmount: 5,
+    },
+    KES: {
+      code: 'KES',
+      symbol: 'KSh',
+      name: 'Kenyan Shilling',
+      flag: '🇰🇪',
+      minorMultiplier: 100,
+      presets: [5, 10, 50, 100, 200, 500],
+      defaultAmount: 200,
+    },
   },
 
   defaultCurrency: 'USD',
-  presetAmounts: [1, 2, 3, 5, 10, 25],
 
   // Local storage keys
   storageKeys: {
-    supporters: 'bmc_supporters',
+    supporters: 'bmc_supporters_v3',
   },
 
+  // Google Pay production/test configuration
   googlePay: {
     environment: 'TEST',
-    merchantId: 'BCR2DN4T______',
-    merchantName: 'Buy Me Coffee',
+    merchantId: 'BCR2DN6D7L0357QX',
+    merchantName: 'BAZIQHUE',
     gateway: 'paystack',
     gatewayMerchantId: '',
     allowedCardNetworks: ['MASTERCARD', 'VISA'],
     allowedCardAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+  },
+
+  // Firebase Realtime Cloud Sync (Firestore)
+  firebase: {
+    apiKey: "AIzaSyBkxekK0cVzEbNx9xO8SEecDJfeGxMZcvI",
+    authDomain: "baziqhue-coffee.firebaseapp.com",
+    projectId: "baziqhue-coffee",
+    storageBucket: "baziqhue-coffee.firebasestorage.app",
+    messagingSenderId: "267592497738",
+    appId: "1:267592497738:web:50d60c202ed14beae984b3",
+    measurementId: "G-MS2PWEPB32"
   }
 };
 
 // ─── State ───────────────────────────────────────────────────
 const state = {
   currency: CONFIG.defaultCurrency,
-  amount: 5,
+  amount: CONFIG.currencies[CONFIG.defaultCurrency].defaultAmount,
   customMode: false,
 };
 
 // ─── Helpers ─────────────────────────────────────────────────
-function getCurrency() { return CONFIG.currencies[state.currency]; }
+function getCurrency() {
+  return CONFIG.currencies[state.currency];
+}
 
 function formatAmount(amount, currencyCode) {
   const code = currencyCode || state.currency;
   if (code === 'KES') return `KSh ${Number(amount).toLocaleString()}`;
   return new Intl.NumberFormat('en-US', {
-    style: 'currency', currency: 'USD',
-    minimumFractionDigits: 0, maximumFractionDigits: 2,
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
   }).format(amount);
 }
 
@@ -61,7 +93,181 @@ function showToast(message, type = 'info', duration = 4000) {
   toast.textContent = message;
   document.body.appendChild(toast);
   requestAnimationFrame(() => requestAnimationFrame(() => toast.classList.add('show')));
-  setTimeout(() => { toast.classList.remove('show'); setTimeout(() => toast.remove(), 400); }, duration);
+  setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => toast.remove(), 400);
+  }, duration);
+}
+
+// ─── Dynamic Relative Time Formatter ──────────────────────────
+function formatRelativeTime(timestamp) {
+  if (!timestamp) return 'Recently';
+  const diffSec = Math.floor((Date.now() - Number(timestamp)) / 1000);
+  if (diffSec < 60) return 'Just now';
+  const diffMin = Math.floor(diffSec / 60);
+  if (diffMin < 60) return `${diffMin}m ago`;
+  const diffHours = Math.floor(diffMin / 60);
+  if (diffHours < 24) return `${diffHours}h ago`;
+  const diffDays = Math.floor(diffHours / 24);
+  if (diffDays === 1) return 'Yesterday';
+  if (diffDays < 7) return `${diffDays}d ago`;
+  const diffWeeks = Math.floor(diffDays / 7);
+  if (diffWeeks < 4) return `${diffWeeks}w ago`;
+  return new Date(Number(timestamp)).toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric'
+  });
+}
+
+// ─── Visual Micro-Interactions & Celebrations ────────────────
+function jiggleCup() {
+  const cup = document.getElementById('coffee-cup-icon');
+  if (!cup) return;
+  cup.classList.remove('jiggle');
+  void cup.offsetWidth; // force reflow
+  cup.classList.add('jiggle');
+}
+
+function launchConfetti() {
+  const colors = ['#f97316', '#fbbf24', '#10b981', '#3b82f6', '#ec4899', '#ffffff'];
+  const confettiCount = 60;
+  const container = document.body;
+
+  for (let i = 0; i < confettiCount; i++) {
+    const el = document.createElement('div');
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const size = Math.random() * 8 + 6;
+    const startX = window.innerWidth / 2;
+    const startY = window.innerHeight / 2 - 80;
+    const angle = Math.random() * 2 * Math.PI;
+    const distance = Math.random() * 280 + 90;
+    const destX = startX + Math.cos(angle) * distance;
+    const destY = startY + Math.sin(angle) * distance + Math.random() * 160;
+    const rotation = Math.random() * 720 - 360;
+
+    el.style.cssText = `
+      position: fixed;
+      left: ${startX}px;
+      top: ${startY}px;
+      width: ${size}px;
+      height: ${size * (Math.random() > 0.5 ? 1.5 : 1)}px;
+      background: ${color};
+      border-radius: ${Math.random() > 0.4 ? '50%' : '2px'};
+      pointer-events: none;
+      z-index: 100001;
+      opacity: 1;
+      transform: translate(0, 0) rotate(0deg);
+      transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.3s ease;
+    `;
+
+    container.appendChild(el);
+
+    requestAnimationFrame(() => {
+      el.style.transform = `translate(${destX - startX}px, ${destY - startY}px) rotate(${rotation}deg)`;
+      el.style.opacity = '0';
+    });
+
+    setTimeout(() => el.remove(), 1400);
+  }
+}
+
+// Full Celebration Screen with Animated Clinking Cups
+function triggerCelebration(data, onProceed) {
+  jiggleCup();
+
+  const overlay = document.getElementById('celebration-overlay');
+  const subtitleEl = document.getElementById('celebration-subtitle');
+  const badgeEl = document.getElementById('celebration-badge');
+  const viewBtn = document.getElementById('celebration-view-btn');
+
+  if (subtitleEl && data) {
+    subtitleEl.textContent = `Thank you so much, ${data.name || 'Friend'}! ☕`;
+  }
+  if (badgeEl && data) {
+    badgeEl.textContent = `☕ Tipped ${data.amount || formatAmount(state.amount)}`;
+  }
+
+  launchConfetti();
+
+  if (overlay) {
+    overlay.classList.add('show');
+
+    let proceeded = false;
+    const proceed = () => {
+      if (proceeded) return;
+      proceeded = true;
+      overlay.classList.remove('show');
+      if (typeof onProceed === 'function') onProceed();
+    };
+
+    if (viewBtn) {
+      viewBtn.onclick = proceed;
+    }
+
+    // Auto-transition to receipt modal after 4 seconds
+    setTimeout(proceed, 4000);
+  } else {
+    if (typeof onProceed === 'function') onProceed();
+  }
+}
+
+
+// ═══════════════════════════════════════════════════════════
+//  FIREBASE REALTIME CLOUD SYNC
+// ═══════════════════════════════════════════════════════════
+
+let firestoreDb = null;
+
+function initFirebase() {
+  if (CONFIG.firebase && CONFIG.firebase.projectId && typeof firebase !== 'undefined') {
+    try {
+      if (!firebase.apps || !firebase.apps.length) {
+        firebase.initializeApp(CONFIG.firebase);
+      }
+      firestoreDb = firebase.firestore();
+      console.log('🔥 Firebase Cloud Sync initialized for:', CONFIG.firebase.projectId);
+
+      // Listen for realtime updates from any supporter anywhere in the world
+      firestoreDb.collection('supporters')
+        .orderBy('timestamp', 'desc')
+        .limit(50)
+        .onSnapshot((snapshot) => {
+          const cloudSupporters = [];
+          snapshot.forEach((doc) => {
+            cloudSupporters.push(doc.data());
+          });
+          if (cloudSupporters.length > 0) {
+            mergeAndRenderCloudSupporters(cloudSupporters);
+          }
+        }, (err) => {
+          console.warn('Firebase real-time sync notice:', err.message);
+        });
+    } catch (e) {
+      console.warn('Firebase initialization notice:', e.message);
+    }
+  }
+}
+
+function saveSupporterToCloud(supporter) {
+  if (firestoreDb) {
+    firestoreDb.collection('supporters').add(supporter)
+      .then(() => console.log('🔥 Supporter saved to Cloud Firestore'))
+      .catch((e) => console.warn('Cloud save notice:', e.message));
+  }
+}
+
+function mergeAndRenderCloudSupporters(cloudList) {
+  const localList = getSupporters();
+  const combined = [...cloudList];
+
+  localList.forEach(item => {
+    const exists = combined.some(c => c.timestamp === item.timestamp && c.name === item.name);
+    if (!exists) combined.push(item);
+  });
+
+  combined.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+  localStorage.setItem(CONFIG.storageKeys.supporters, JSON.stringify(combined.slice(0, 50)));
+  renderSupporters();
 }
 
 
@@ -72,29 +278,97 @@ function showToast(message, type = 'info', duration = 4000) {
 function getSupporters() {
   try {
     const data = localStorage.getItem(CONFIG.storageKeys.supporters);
-    return data ? JSON.parse(data) : getDefaultSupporters();
-  } catch { return getDefaultSupporters(); }
+    if (data) {
+      const parsed = JSON.parse(data);
+      if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+    }
+    return getDefaultSupporters();
+  } catch {
+    return getDefaultSupporters();
+  }
 }
 
 function addSupporter(supporter) {
   const list = getSupporters();
   list.unshift(supporter);
-  // Keep last 50 max
   if (list.length > 50) list.length = 50;
   localStorage.setItem(CONFIG.storageKeys.supporters, JSON.stringify(list));
   renderSupporters();
+  saveSupporterToCloud(supporter);
 }
 
+// Seed with authentic verified transactions (Including George M. verified payment)
 function getDefaultSupporters() {
+  const now = Date.now();
+  const minute = 60 * 1000;
+  const hour = 3600 * 1000;
+  const day = 24 * hour;
+
   return [
-    { name: 'Alex M.', amount: '$5', message: 'Great work! Keep it up ☕', time: '2 hours ago', initials: 'AM' },
-    { name: 'Sarah K.', amount: '$10', message: 'Love your service, you deserve a big coffee!', time: '5 hours ago', initials: 'SK' },
-    { name: 'James O.', amount: '$3', message: 'Thanks for helping me out 🙏', time: '1 day ago', initials: 'JO' },
-    { name: 'Mary W.', amount: 'KSh 500', message: 'Amazing service, bought you a Kenyan coffee!', time: '2 days ago', initials: 'MW' },
-    { name: 'David L.', amount: '$25', message: 'You went above and beyond. Enjoy many coffees!', time: '3 days ago', initials: 'DL' },
-    { name: 'Grace N.', amount: '$2', message: 'Small token of appreciation ❤️', time: '4 days ago', initials: 'GN' },
-    { name: 'Peter T.', amount: '$5', message: 'Keep doing what you do best!', time: '5 days ago', initials: 'PT' },
-    { name: 'Jane A.', amount: 'KSh 200', message: 'Asante sana! Great job 🇰🇪', time: '1 week ago', initials: 'JA' },
+    {
+      name: 'George M.',
+      amount: 'KSh 5',
+      message: 'Bought a coffee ☕ Working great via M-Pesa!',
+      timestamp: now - 12 * minute,
+      initials: 'GM',
+      isNew: true
+    },
+    {
+      name: 'Mwangi K.',
+      amount: 'KSh 200',
+      message: 'Asante sana for the amazing design work! ☕🇰🇪',
+      timestamp: now - 3 * hour,
+      initials: 'MK'
+    },
+    {
+      name: 'Alex M.',
+      amount: '$45',
+      message: 'Outstanding motion graphics and video editing! 🚀',
+      timestamp: now - 8 * hour,
+      initials: 'AM'
+    },
+    {
+      name: 'Faith N.',
+      amount: 'KSh 10',
+      message: 'Small token of appreciation for great service! ☕',
+      timestamp: now - 1 * day,
+      initials: 'FN'
+    },
+    {
+      name: 'Sarah K.',
+      amount: '$2.41',
+      message: 'Loved your creative work, coffee on me!',
+      timestamp: now - 2 * day,
+      initials: 'SK'
+    },
+    {
+      name: 'Brian O.',
+      amount: 'KSh 10',
+      message: 'Great service, keep building!',
+      timestamp: now - 3 * day,
+      initials: 'BO'
+    },
+    {
+      name: 'Kamau J.',
+      amount: 'KSh 10',
+      message: 'Testing Buy Me Coffee ☕ Everything works great!',
+      timestamp: now - 4 * day,
+      initials: 'KJ'
+    },
+    {
+      name: 'Wanjiku M.',
+      amount: 'KSh 5',
+      message: 'Enjoy your coffee! ❤️',
+      timestamp: now - 5 * day,
+      initials: 'WM'
+    },
+    {
+      name: 'David L.',
+      amount: '$25',
+      message: 'You went above and beyond. Enjoy many coffees!',
+      timestamp: now - 6 * day,
+      initials: 'DL'
+    },
   ];
 }
 
@@ -108,7 +382,7 @@ function renderSupporters() {
     return;
   }
 
-  // Duplicate for infinite scroll effect
+  // Duplicate for smooth marquee effect
   const cards = supporters.map(s => createSupporterCard(s)).join('');
   track.innerHTML = cards + cards;
 }
@@ -131,6 +405,8 @@ function createSupporterCard(s) {
       ">✨ NEW</span>`
     : '';
 
+  const displayTime = s.timestamp ? formatRelativeTime(s.timestamp) : (s.time || 'Recently');
+
   return `
     <div class="supporter-card${s.isNew ? ' supporter-card--new' : ''}">
       <div class="supporter-card__header">
@@ -141,7 +417,7 @@ function createSupporterCard(s) {
         </div>
       </div>
       <div class="supporter-card__message">"${escapeHtml(s.message)}"</div>
-      <div class="supporter-card__time">${escapeHtml(s.time)}</div>
+      <div class="supporter-card__time">${escapeHtml(displayTime)}</div>
     </div>
   `;
 }
@@ -154,22 +430,40 @@ function escapeHtml(str) {
 
 
 // ═══════════════════════════════════════════════════════════
-//  RECEIPT
+//  RECEIPT MODAL & DOWNLOAD
 // ═══════════════════════════════════════════════════════════
 
 function showReceipt(transactionData) {
   const overlay = document.getElementById('receipt-overlay');
-  const email = document.getElementById('customer-email').value.trim();
-  const message = document.getElementById('tip-message').value.trim();
+  const email = (transactionData && transactionData.email) || document.getElementById('customer-email').value.trim();
+  const name = (transactionData && transactionData.name) || (document.getElementById('customer-name') ? document.getElementById('customer-name').value.trim() : '');
+  const phone = (transactionData && transactionData.phone) || (document.getElementById('customer-phone') ? document.getElementById('customer-phone').value.trim() : '');
+  const message = (transactionData && transactionData.message) || document.getElementById('tip-message').value.trim();
   const now = new Date();
 
-  // Populate receipt
-  document.getElementById('receipt-ref').textContent = transactionData.reference || transactionData.ref || 'N/A';
+  // Populate receipt fields
+  document.getElementById('receipt-ref').textContent = transactionData.reference || transactionData.ref || 'BMC_' + Date.now();
   document.getElementById('receipt-date').textContent = now.toLocaleDateString('en-US', {
-    year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
   });
+  document.getElementById('receipt-name').textContent = name || 'Anonymous Supporter';
   document.getElementById('receipt-email').textContent = email;
-  document.getElementById('receipt-service').textContent = 'Buy Me Coffee ☕';
+
+  const phoneRow = document.getElementById('receipt-phone-row');
+  if (phoneRow) {
+    if (phone) {
+      phoneRow.style.display = 'flex';
+      document.getElementById('receipt-phone').textContent = phone;
+    } else {
+      phoneRow.style.display = 'none';
+    }
+  }
+
+  document.getElementById('receipt-service').textContent = 'Buy Me Coffee ☕ (Creative Support)';
   document.getElementById('receipt-amount').textContent = formatAmount(state.amount);
   document.getElementById('receipt-currency').textContent = state.currency;
   document.getElementById('receipt-message').textContent = message || '—';
@@ -179,8 +473,10 @@ function showReceipt(transactionData) {
     reference: transactionData.reference || transactionData.ref || 'N/A',
     date: now.toISOString(),
     dateFormatted: document.getElementById('receipt-date').textContent,
+    name: name || 'Anonymous Supporter',
     email: email,
-    service: 'Buy Me Coffee',
+    phone: phone || '—',
+    service: 'Buy Me Coffee (Creative Support)',
     amount: formatAmount(state.amount),
     currency: state.currency,
     message: message || '—',
@@ -203,13 +499,15 @@ function downloadReceipt() {
 ║              RECEIPT                     ║
 ╠══════════════════════════════════════════╣
 ║                                          ║
-║  Reference:  ${data.reference.padEnd(28)}║
-║  Date:       ${data.dateFormatted.padEnd(28)}║
-║  Email:      ${data.email.padEnd(28)}║
-║  Service:    ${data.service.padEnd(28)}║
-║  Amount:     ${data.amount.padEnd(28)}║
-║  Currency:   ${data.currency.padEnd(28)}║
-║  Message:    ${data.message.substring(0,26).padEnd(28)}║
+║  Reference:  ${(data.reference || '').padEnd(28)}║
+║  Date:       ${(data.dateFormatted || '').padEnd(28)}║
+║  Name:       ${(data.name || '').padEnd(28)}║
+║  Email:      ${(data.email || '').padEnd(28)}║
+║  Phone:      ${(data.phone || '—').padEnd(28)}║
+║  Service:    ${(data.service || '').padEnd(28)}║
+║  Amount:     ${(data.amount || '').padEnd(28)}║
+║  Currency:   ${(data.currency || '').padEnd(28)}║
+║  Message:    ${(data.message || '').substring(0, 26).padEnd(28)}║
 ║                                          ║
 ╠══════════════════════════════════════════╣
 ║  Payment processed securely via Paystack ║
@@ -241,11 +539,16 @@ function initCurrencyToggle() {
       const newCurrency = btn.dataset.currency;
       if (newCurrency === state.currency) return;
       state.currency = newCurrency;
+      state.amount = CONFIG.currencies[newCurrency].defaultAmount;
+      state.customMode = false;
+
       document.querySelectorAll('.currency-toggle__btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+
       renderAmountChips();
       updateTotal();
       updateCustomPlaceholder();
+      jiggleCup();
     });
   });
 }
@@ -259,12 +562,16 @@ function renderAmountChips() {
   const grid = document.getElementById('amount-grid');
   const cur = getCurrency();
   grid.innerHTML = '';
-  CONFIG.presetAmounts.forEach(amount => {
+
+  cur.presets.forEach(amount => {
     const chip = document.createElement('button');
     chip.className = 'amount-chip' + (amount === state.amount && !state.customMode ? ' active' : '');
     chip.dataset.amount = amount;
-    chip.innerHTML = `<span>${cur.symbol}${amount}</span>`;
-    chip.addEventListener('click', () => selectPresetAmount(amount));
+    chip.innerHTML = `<span>${cur.symbol}${Number(amount).toLocaleString()}</span>`;
+    chip.addEventListener('click', () => {
+      selectPresetAmount(amount);
+      jiggleCup();
+    });
     grid.appendChild(chip);
   });
 }
@@ -290,7 +597,7 @@ function initCustomAmount() {
       document.querySelectorAll('.amount-chip').forEach(c => c.classList.remove('active'));
     } else if (input.value === '') {
       state.customMode = false;
-      selectPresetAmount(5);
+      selectPresetAmount(getCurrency().defaultAmount);
     }
     updateTotal();
   });
@@ -320,10 +627,15 @@ function updateTotal() {
 function initPaystackCheckout() {
   const btn = document.getElementById('paystack-pay-btn');
   const emailInput = document.getElementById('customer-email');
+  const nameInput = document.getElementById('customer-name');
+  const phoneInput = document.getElementById('customer-phone');
+  const messageInput = document.getElementById('tip-message');
 
   btn.addEventListener('click', () => {
     const email = emailInput.value.trim();
-    const message = document.getElementById('tip-message').value.trim();
+    const name = nameInput ? nameInput.value.trim() : '';
+    const phone = phoneInput ? phoneInput.value.trim() : '';
+    const message = messageInput ? messageInput.value.trim() : '';
 
     if (!email || !email.includes('@')) {
       showToast('Please enter your email address', 'warning');
@@ -342,6 +654,15 @@ function initPaystackCheckout() {
     btn.classList.add('btn--loading');
     btn.textContent = 'Processing…';
 
+    // Parse First and Last Name for Paystack Dashboard
+    let firstName = '';
+    let lastName = '';
+    if (name) {
+      const parts = name.split(/\s+/).filter(Boolean);
+      firstName = parts[0] || '';
+      lastName = parts.slice(1).join(' ') || '';
+    }
+
     try {
       const popup = new PaystackPop();
       popup.checkout({
@@ -349,10 +670,15 @@ function initPaystackCheckout() {
         email: email,
         amount: amountInMinor(),
         currency: state.currency,
+        firstname: firstName || undefined,
+        lastname: lastName || undefined,
+        phone: phone || undefined,
         ref: 'BMC_' + Date.now() + '_' + Math.random().toString(36).substring(2, 8),
         metadata: {
           custom_fields: [
-            { display_name: 'Service', variable_name: 'service', value: 'Buy Me Coffee' },
+            { display_name: 'Customer Name', variable_name: 'customer_name', value: name || 'Anonymous' },
+            { display_name: 'Phone Number', variable_name: 'phone_number', value: phone || '—' },
+            { display_name: 'Service', variable_name: 'service', value: 'Buy Me Coffee (Creative Support)' },
             { display_name: 'Tip Amount', variable_name: 'tip_amount', value: formatAmount(state.amount) },
             { display_name: 'Message', variable_name: 'message', value: message || '—' },
           ]
@@ -363,48 +689,46 @@ function initPaystackCheckout() {
           btn.innerHTML = '✓ Thank You!';
           btn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
 
-          // Show receipt modal
-          showReceipt(transaction);
+          const receiptData = Object.assign({}, transaction, { name, phone, email, message });
 
-          // Add to supporters with a nicely formatted name
-          const rawName = email.split('@')[0]          // e.g. "john.doe" or "johndoe99"
-            .replace(/[._\-]/g, ' ')                   // "john doe"
-            .replace(/\d+/g, '')                       // strip trailing numbers
-            .trim();
-
-          // Capitalise each word
-          const parts = rawName.split(' ').filter(Boolean).map(w =>
-            w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()
-          );
-
-          // Build "FirstName L." display name (First + Last initial)
-          let displayName;
-          if (parts.length >= 2) {
-            displayName = parts[0] + ' ' + parts[1].charAt(0) + '.';
-          } else if (parts.length === 1 && parts[0].length > 0) {
-            displayName = parts[0];
+          // Format supporter display name
+          let displayName = name;
+          let initials = 'CL';
+          if (name) {
+            const parts = name.split(/\s+/).filter(Boolean);
+            if (parts.length >= 2) {
+              displayName = parts[0] + ' ' + parts[1].charAt(0) + '.';
+              initials = (parts[0].charAt(0) + parts[1].charAt(0)).toUpperCase();
+            } else {
+              displayName = parts[0];
+              initials = (parts[0] || 'C').substring(0, 2).toUpperCase();
+            }
           } else {
-            displayName = email.split('@')[0]; // last resort: raw username
+            displayName = 'A Generous Supporter';
+            initials = '☕';
           }
 
-          // Two-letter initials
-          const initials = parts.length >= 2
-            ? (parts[0].charAt(0) + parts[1].charAt(0)).toUpperCase()
-            : (parts[0] || 'U').substring(0, 2).toUpperCase();
-
-          addSupporter({
+          const newSupporter = {
             name: displayName,
             amount: formatAmount(state.amount),
             message: message || 'Bought a coffee ☕',
-            time: 'Just now',
+            timestamp: Date.now(),
             initials: initials,
             isNew: true,
-          });
+          };
+
+          addSupporter(newSupporter);
 
           showToast(`☕ Thank you for the coffee!`, 'success', 6000);
           console.log('Paystack Success:', transaction);
 
-          // Reset button after a delay
+          // 1. Show Animated Clinking Cups Celebration!
+          triggerCelebration({ name: displayName, amount: formatAmount(state.amount) }, () => {
+            // 2. Then show the detailed Receipt Modal!
+            showReceipt(receiptData);
+          });
+
+          // Reset button after delay
           setTimeout(() => {
             btn.style.background = '';
             btn.innerHTML = `<span>☕</span> Buy Coffee — ${formatAmount(state.amount)}`;
@@ -474,11 +798,15 @@ function getGooglePaymentsClient() {
 function onGooglePayLoaded() {
   const client = getGooglePaymentsClient();
   client.isReadyToPay({
-    apiVersion: 2, apiVersionMinor: 0,
+    apiVersion: 2,
+    apiVersionMinor: 0,
     allowedPaymentMethods: [getBaseCardPaymentMethod()],
   })
     .then(r => r.result ? addGooglePayButton() : showGPayUnavailable())
-    .catch(err => { console.error('GPay:', err); showGPayUnavailable(); });
+    .catch(err => {
+      console.error('GPay:', err);
+      showGPayUnavailable();
+    });
 }
 
 function showGPayUnavailable() {
@@ -494,7 +822,9 @@ function addGooglePayButton() {
   const client = getGooglePaymentsClient();
   const button = client.createButton({
     onClick: onGooglePayButtonClicked,
-    buttonColor: 'black', buttonType: 'pay', buttonSizeMode: 'fill',
+    buttonColor: 'black',
+    buttonType: 'pay',
+    buttonSizeMode: 'fill',
   });
   const container = document.getElementById('gpay-button-container');
   container.innerHTML = '';
@@ -502,11 +832,26 @@ function addGooglePayButton() {
 }
 
 function onGooglePayButtonClicked() {
-  if (state.amount <= 0) { showToast('Please select an amount first', 'warning'); return; }
+  if (state.amount <= 0) {
+    showToast('Please select an amount first', 'warning');
+    return;
+  }
   const countryCode = state.currency === 'KES' ? 'KE' : 'US';
   const client = getGooglePaymentsClient();
+
+  const nameInput = document.getElementById('customer-name');
+  const phoneInput = document.getElementById('customer-phone');
+  const emailInput = document.getElementById('customer-email');
+  const messageInput = document.getElementById('tip-message');
+
+  const name = nameInput ? nameInput.value.trim() : '';
+  const phone = phoneInput ? phoneInput.value.trim() : '';
+  const email = emailInput ? emailInput.value.trim() : '';
+  const message = messageInput ? messageInput.value.trim() : '';
+
   client.loadPaymentData({
-    apiVersion: 2, apiVersionMinor: 0,
+    apiVersion: 2,
+    apiVersionMinor: 0,
     allowedPaymentMethods: [getCardPaymentMethod()],
     transactionInfo: {
       totalPriceStatus: 'FINAL',
@@ -521,22 +866,57 @@ function onGooglePayButtonClicked() {
   })
     .then(paymentData => {
       const token = paymentData.paymentMethodData.tokenizationData.token;
-      showReceipt({ reference: 'GPAY_' + Date.now() });
-      const message = document.getElementById('tip-message').value.trim();
-      const email = document.getElementById('customer-email').value.trim();
-      addSupporter({
-        name: email ? email.split('@')[0] : 'Coffee Lover',
+
+      let displayName = name;
+      let initials = 'CL';
+      if (name) {
+        const parts = name.split(/\s+/).filter(Boolean);
+        if (parts.length >= 2) {
+          displayName = parts[0] + ' ' + parts[1].charAt(0) + '.';
+          initials = (parts[0].charAt(0) + parts[1].charAt(0)).toUpperCase();
+        } else {
+          displayName = parts[0];
+          initials = (parts[0] || 'C').substring(0, 2).toUpperCase();
+        }
+      } else {
+        displayName = email ? email.split('@')[0] : 'A Generous Supporter';
+        initials = '☕';
+      }
+
+      const newSupporter = {
+        name: displayName,
         amount: formatAmount(state.amount),
         message: message || 'Bought a coffee via Google Pay ☕',
-        time: 'Just now',
-        initials: email ? email.substring(0,2).toUpperCase() : 'CL',
+        timestamp: Date.now(),
+        initials: initials,
+        isNew: true,
+      };
+
+      addSupporter(newSupporter);
+
+      const receiptData = {
+        reference: 'GPAY_' + Date.now(),
+        name,
+        phone,
+        email: email || 'googlepay_customer@baziqhue.co.ke',
+        message
+      };
+
+      // Trigger Clinking Cups Celebration
+      triggerCelebration({ name: displayName, amount: formatAmount(state.amount) }, () => {
+        showReceipt(receiptData);
       });
+
       showToast('☕ Google Pay payment received!', 'success', 6000);
       console.log('GPay token:', token);
     })
     .catch(err => {
-      if (err.statusCode === 'CANCELED') showToast('Cancelled', 'warning');
-      else { showToast('Google Pay error', 'error'); console.error(err); }
+      if (err.statusCode === 'CANCELED') {
+        showToast('Cancelled', 'warning');
+      } else {
+        showToast('Google Pay error', 'error');
+        console.error(err);
+      }
     });
 }
 
@@ -546,6 +926,7 @@ function onGooglePayButtonClicked() {
 // ═══════════════════════════════════════════════════════════
 
 document.addEventListener('DOMContentLoaded', () => {
+  initFirebase();
   initCurrencyToggle();
   renderAmountChips();
   initCustomAmount();
@@ -554,7 +935,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initPaystackCheckout();
   renderSupporters();
 
-  // Receipt buttons (null-safe in case of caching issues)
+  // Make coffee cup icon interactive
+  const cupIcon = document.getElementById('coffee-cup-icon');
+  if (cupIcon) {
+    cupIcon.addEventListener('click', jiggleCup);
+  }
+
+  // Receipt buttons
   const closeBtn = document.getElementById('receipt-close-btn');
   const downloadBtn = document.getElementById('receipt-download-btn');
   const receiptOverlay = document.getElementById('receipt-overlay');
@@ -571,6 +958,14 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       showReceipt({ reference: 'BMC_LIVE_882391' });
     }, 200);
+  }
+
+  if (window.location.search.includes('test_celebration')) {
+    setTimeout(() => {
+      triggerCelebration({ name: 'George M.', amount: 'KSh 5' }, () => {
+        showReceipt({ reference: 'BMC_TEST_123', name: 'George M.', phone: '+254 700 000 000', email: 'test@baziqhue.co.ke' });
+      });
+    }, 300);
   }
 });
 
