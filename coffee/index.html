@@ -7,6 +7,15 @@
   <title>Buy Me Coffee ☕</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://js.paystack.co/v2/inline.js"></script>
+  <script>
+    window.onGooglePayLoaded = function() {
+      if (typeof window.initGooglePay === 'function') {
+        window.initGooglePay();
+      } else {
+        window._gpayScriptLoaded = true;
+      }
+    };
+  </script>
   <script async src="https://pay.google.com/gp/p/js/pay.js" onload="onGooglePayLoaded()"></script>
   <!-- Firebase Realtime Cloud Sync -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>

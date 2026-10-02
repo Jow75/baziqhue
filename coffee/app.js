@@ -806,26 +806,46 @@ function getGooglePaymentsClient() {
 }
 
 function onGooglePayLoaded() {
-  const client = getGooglePaymentsClient();
-  client.isReadyToPay({
-    apiVersion: 2,
-    apiVersionMinor: 0,
-    allowedPaymentMethods: [getBaseCardPaymentMethod()],
-  })
-    .then(r => r.result ? addGooglePayButton() : showGPayUnavailable())
-    .catch(err => {
-      console.error('GPay:', err);
-      showGPayUnavailable();
-    });
+  try {
+    const client = getGooglePaymentsClient();
+    client.isReadyToPay({
+      apiVersion: 2,
+      apiVersionMinor: 0,
+      allowedPaymentMethods: [getBaseCardPaymentMethod()],
+    })
+      .then(r => (r && r.result) ? addGooglePayButton() : renderBrandedGooglePayButton())
+      .catch(err => {
+        console.warn('GPay isReadyToPay notice:', err);
+        renderBrandedGooglePayButton();
+      });
+  } catch (err) {
+    console.warn('GPay client error:', err);
+    renderBrandedGooglePayButton();
+  }
+}
+
+function renderBrandedGooglePayButton() {
+  const container = document.getElementById('gpay-button-container');
+  if (!container) return;
+  container.innerHTML = `
+    <button type="button" class="btn--gpay-branded" id="fallback-gpay-btn" aria-label="Pay with Google Pay">
+      <span>Pay with</span>
+      <svg width="41" height="17" viewBox="0 0 41 17" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;display:inline-block;">
+        <path d="M19.526 8.358v4.945h-1.603V1.658h4.254c1.298 0 2.378.423 3.238 1.27.86.845 1.29 1.884 1.29 3.117 0 1.246-.43 2.29-1.29 3.13-.86.837-1.94 1.256-3.238 1.256h-2.651v-.073zm0-5.326v3.953h2.724c.82 0 1.5-.27 2.04-.809.54-.546.81-1.205.81-1.977 0-.759-.27-1.398-.81-1.917-.54-.526-1.22-.79-2.04-.79h-2.724v.54zM29.566 5.092c1.19 0 2.13.317 2.82.951.69.634 1.03 1.488 1.03 2.563v4.697h-1.53v-1.184h-.073c-.66.974-1.55 1.46-2.67 1.46-.96 0-1.76-.285-2.4-.855-.64-.57-.96-1.284-.96-2.143 0-.912.34-1.646 1.02-2.202.68-.556 1.59-.834 2.73-.834 1 0 1.8.187 2.4.56v-.393c0-.604-.24-1.11-.72-1.518-.48-.409-1.06-.613-1.74-.613-.91 0-1.63.385-2.16 1.155l-1.42-.892c.78-1.121 1.99-1.682 3.63-1.682v-.058zm-2.8 5.698c0 .438.19.81.57 1.117.38.307.84.46 1.38.46.7 0 1.32-.263 1.86-.79.54-.526.81-1.146.81-1.86-.5-.394-1.21-.59-2.13-.59-.66 0-1.21.16-1.65.482-.44.321-.66.72-.66 1.196v-.015zM40.236 5.385l-5.34 12.285h-1.66l1.98-4.288-3.52-7.997h1.75l2.53 6.136h.04l2.48-6.136h1.74z" fill="#fff"/>
+        <path d="M13.736 7.558c0-.52-.04-.908-.13-1.303H7.136v2.545h3.75c-.08.68-.51 1.633-1.44 2.278l2.25 1.743c1.35-1.246 2.04-3.084 2.04-5.263z" fill="#4285F4"/>
+        <path d="M7.136 14.281c1.93 0 3.55-.634 4.74-1.728l-2.25-1.743c-.6.416-1.41.714-2.49.714-1.9 0-3.51-1.268-4.08-3.012H.706v1.794c1.2 2.377 3.66 3.975 6.43 3.975z" fill="#34A853"/>
+        <path d="M3.056 8.512c-.15-.437-.23-.904-.23-1.385s.08-.948.22-1.385V3.948H.706C.256 4.844 0 5.865 0 7.127s.256 2.283.706 3.179l2.35-1.794z" fill="#FBBC04"/>
+        <path d="M7.136 2.493c1.37 0 2.29.59 2.82 1.086l2.06-2.012C10.746.526 9.066 0 7.136 0 4.366 0 1.906 1.598.706 3.948l2.35 1.794c.57-1.743 2.18-3.249 4.08-3.249z" fill="#EA4335"/>
+      </svg>
+    </button>`;
+  const btn = document.getElementById('fallback-gpay-btn');
+  if (btn) {
+    btn.addEventListener('click', onGooglePayButtonClicked);
+  }
 }
 
 function showGPayUnavailable() {
-  document.getElementById('gpay-button-container').innerHTML = `
-    <div style="text-align:center;padding:12px;font-size:0.78rem;color:var(--text-muted);
-    border:1px dashed var(--glass-border);border-radius:var(--radius-sm);width:100%;">
-      Google Pay not available on this device/browser.<br>
-      <span style="font-size:0.7rem;">Use the button above — it supports all payment methods.</span>
-    </div>`;
+  renderBrandedGooglePayButton();
 }
 
 function addGooglePayButton() {
@@ -980,6 +1000,17 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }, 300);
   }
+  // Always render Google Pay button immediately so it is never missing:
+  renderBrandedGooglePayButton();
 });
 
+window.initGooglePay = onGooglePayLoaded;
 window.onGooglePayLoaded = onGooglePayLoaded;
+
+if (window._gpayScriptLoaded || (window.google && window.google.payments && window.google.payments.api)) {
+  try {
+    onGooglePayLoaded();
+  } catch (e) {
+    renderBrandedGooglePayButton();
+  }
+}
