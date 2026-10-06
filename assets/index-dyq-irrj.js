@@ -13643,22 +13643,97 @@ const dh = Od(rh),
                           }),
                         ],
                       }),
-                      c.jsx("div", {
+                      c.jsxs("div", {
                         className: "space-y-2",
-                        children: Zh.map((d) =>
-                          c.jsx(
-                            Md,
-                            {
-                              icon: d.icon,
-                              title: d.name,
-                              description: d.description,
-                              demoType: d.demoType,
-                              externalLink: d.externalLink,
-                              onOpenDemo: q,
-                            },
-                            d.name,
+                        children: [
+                          Zh.map((d) =>
+                            c.jsx(
+                              Md,
+                              {
+                                icon: d.icon,
+                                title: d.name,
+                                description: d.description,
+                                demoType: d.demoType,
+                                externalLink: d.externalLink,
+                                onOpenDemo: q,
+                              },
+                              d.name,
+                            ),
                           ),
-                        ),
+                          c.jsxs("a", {
+                            href: "https://subtleworks-studio.netlify.app/",
+                            target: "_blank",
+                            rel: "noopener noreferrer",
+                            "aria-label":
+                              "Explore SubtleWorks Studio: Digital tools & Chrome extensions (opens in new tab)",
+                            className:
+                              "flex items-start gap-4 p-4 rounded-lg hover:bg-white/5 transition-all duration-300 group relative subtleworks-card block cursor-pointer no-underline",
+                            children: [
+                              c.jsx("div", {
+                                className:
+                                  "mt-1 text-gray-500 group-hover:text-primary transition-colors duration-300 shrink-0",
+                                children: c.jsxs("svg", {
+                                  ...ze,
+                                  children: [
+                                    c.jsx("rect", {
+                                      width: "20",
+                                      height: "16",
+                                      x: "2",
+                                      y: "4",
+                                      rx: "3",
+                                    }),
+                                    c.jsx("path", { d: "M6 8h.01" }),
+                                    c.jsx("path", { d: "M10 8h.01" }),
+                                    c.jsx("path", { d: "M14 8h.01" }),
+                                    c.jsx("path", { d: "m8 14 2.5-2.5L8 9" }),
+                                    c.jsx("path", { d: "M13 14h3" }),
+                                  ],
+                                }),
+                              }),
+                              c.jsxs("div", {
+                                className: "flex-1 min-w-0",
+                                children: [
+                                  c.jsxs("div", {
+                                    className:
+                                      "flex items-center gap-2 mb-1 flex-wrap",
+                                    children: [
+                                      c.jsx("h4", {
+                                        className:
+                                          "text-white font-bold text-base group-hover:text-primary transition-colors",
+                                        children: "SubtleWorks Studio",
+                                      }),
+                                      c.jsx("span", {
+                                        className:
+                                          "text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20",
+                                        children: "Digital Tools",
+                                      }),
+                                    ],
+                                  }),
+                                  c.jsx("p", {
+                                    className:
+                                      "text-gray-400 text-sm leading-relaxed group-hover:text-gray-300",
+                                    children:
+                                      "Digital tools, Chrome extensions & creative technology. Explore Phantom Typer Simulator & Invisible Selection.",
+                                  }),
+                                  c.jsx("div", {
+                                    className: "mt-4",
+                                    children: c.jsxs("span", {
+                                      className:
+                                        "subtleworks-btn inline-flex items-center gap-2 px-4 py-2 border border-primary/30 bg-primary/5 text-primary text-[10px] font-bold uppercase tracking-widest group-hover:bg-primary group-hover:text-black group-hover:border-primary group-hover:shadow-[0_0_15px_rgba(0,240,255,0.3)] transition-all duration-300 rounded-sm",
+                                      children: [
+                                        c.jsx("span", {
+                                          className: "text-xs",
+                                          children: "▷",
+                                        }),
+                                        " Explore SubtleWorks Studio →",
+                                      ],
+                                    }),
+                                  }),
+                                ],
+                              }),
+                            ],
+                          }),
+                        ],
                       }),
                     ],
                   }),

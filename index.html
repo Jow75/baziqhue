@@ -194,15 +194,39 @@
         transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
       }
 
-      #services .space-y-2 > div:hover {
+      /* Service Rows */
+      #services .space-y-2 > div,
+      #services .space-y-2 > a {
+        background: rgba(255, 255, 255, 0.02) !important;
+        border: 1px solid rgba(255, 255, 255, 0.04) !important;
+        border-radius: 14px !important;
+        margin-bottom: 12px !important;
+        padding: 16px 18px !important;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      }
+
+      #services .space-y-2 > div:hover,
+      #services .space-y-2 > a:hover {
         background: linear-gradient(135deg, rgba(0, 240, 255, 0.08) 0%, rgba(168, 85, 247, 0.06) 100%) !important;
         border-color: rgba(0, 240, 255, 0.35) !important;
         transform: translateX(6px) translateY(-2px);
         box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 240, 255, 0.12) !important;
       }
 
+      /* SubtleWorks Studio Featured Card Enhancements */
+      #services .subtleworks-card {
+        border-color: rgba(0, 240, 255, 0.16) !important;
+        background: linear-gradient(135deg, rgba(0, 240, 255, 0.04) 0%, rgba(168, 85, 247, 0.03) 50%, rgba(255, 255, 255, 0.02) 100%) !important;
+      }
+
+      #services .subtleworks-card:hover {
+        border-color: rgba(0, 240, 255, 0.45) !important;
+        box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 240, 255, 0.2) !important;
+      }
+
       /* Service Icon Badges */
-      #services .space-y-2 > div > div:first-child {
+      #services .space-y-2 > div > div:first-child,
+      #services .space-y-2 > a > div:first-child {
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
@@ -217,7 +241,8 @@
         flex-shrink: 0 !important;
       }
 
-      #services .space-y-2 > div:hover > div:first-child {
+      #services .space-y-2 > div:hover > div:first-child,
+      #services .space-y-2 > a:hover > div:first-child {
         background: rgba(0, 240, 255, 0.2) !important;
         border-color: rgba(0, 240, 255, 0.5) !important;
         box-shadow: 0 0 16px rgba(0, 240, 255, 0.5) !important;
@@ -225,20 +250,23 @@
         transform: scale(1.08);
       }
 
-      #services .space-y-2 > div > div:first-child svg {
+      #services .space-y-2 > div > div:first-child svg,
+      #services .space-y-2 > a > div:first-child svg {
         width: 22px !important;
         height: 22px !important;
       }
 
       /* Service Interactive Buttons */
-      #services button {
+      #services button,
+      #services .subtleworks-btn {
         border-radius: 999px !important;
         font-weight: 700 !important;
         letter-spacing: 0.06em !important;
         transition: all 0.25s ease !important;
       }
 
-      #services button:hover {
+      #services button:hover,
+      #services a:hover .subtleworks-btn {
         transform: translateY(-2px);
       }
 
